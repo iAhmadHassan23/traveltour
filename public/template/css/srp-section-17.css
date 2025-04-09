@@ -1,0 +1,45 @@
+.srp-cta-col{
+    padding: 50px;
+    font-size: 14px;
+    line-height: 20px;
+}
+.srp-cta-col .txt{
+    margin-bottom: 30px;
+}
+.srp-cta-col .txt p{
+    margin-bottom: 0;
+}
+.srp-cta-col h3{
+    font-size: 22px;
+}
+.srp-cta-list li:before {
+    content: "\f772";
+    font-family: "Font Awesome 6 free";
+    font-weight: 900;
+    margin-right: 7px;
+    color: var(--color-3);
+    font-size: 18px;
+}
+.srp-cta-img-holder img{
+    height: 100%;
+    object-fit: cover;
+}
+.cta-number{
+    font-size: 24px;
+    line-height: 30px;
+    color: var(--black);
+    margin-bottom: 20px;
+}
+.cta-number a{
+    color: var(--black);
+}
+.srp-cta-col .btn-primary{
+    background-color: var(--color-1);
+    border-color: var(--color-1);
+    font-size: 14px;
+}
+.srp-cta-col .btn-primary:hover{
+    background-color: var(--white-color);
+    border-color: var(--white-color);
+    color: var(--color-1);
+}

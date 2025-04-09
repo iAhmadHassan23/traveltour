@@ -1,0 +1,24 @@
+
+.srp-about-1-sec .srp-about-left-col{
+    padding-top: 7%;
+    padding-right: 7%;
+    padding-bottom: 7%;
+    padding-left: 15%;
+}
+.srp-about-1-sec .srp-about-img-holder {
+    width: 50%;
+    position: absolute;
+    top: 0;
+    height: 100%;
+    right: 0;
+}
+.srp-about-1-sec .srp-about-img-holder img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center right;
+}
+.srp-about-1-sec .srp-about-left-col{
+    font-size: 15px;
+    line-height: 26px;
+}

@@ -1,0 +1,27 @@
+/*** 
+====================================================================
+	Of Choose Sec
+====================================================================
+***/
+
+.ofp-choose-sec{
+	z-index: 1;
+	padding: 75px 0;
+}
+.ofp-choose-sec.bg-overlay:after{
+	opacity: .8;
+}
+.ofp-choose-col {
+	font-size: 14px;
+	line-height: 20px;
+	padding: 0 10px;
+}
+.ofp-choose-col h3{
+	font-size: 18px;
+}
+.ofp-choose-col .ico-holder{
+	background: rgba(255, 255, 255, 1);
+	min-width: 100px;
+	height: 100px;
+	width: 10px;
+}

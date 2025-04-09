@@ -1,0 +1,20 @@
+/*** 
+====================================================================
+	Our Service Sec
+====================================================================
+***/
+.cwl-service-col {
+    box-shadow: 0 10px 30px rgba(0,0,0,.03);
+    padding: 20px;
+    font-size: 14px;
+}
+.cwl-service-col h3 a{
+	color: var(--black);
+	transition: color .25s ease-in-out;
+}
+.cwl-service-col h3 a:hover{
+	color: var(--primary-color);
+}
+.cwl-service-col .post-thumbnail {
+    padding-bottom: 50px;
+}

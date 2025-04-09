@@ -1,0 +1,41 @@
+.srp-accordian .accordion-button{
+    color: var(--color-1);
+    background:var(--light-grey);
+    padding: 12px 45px 12px 20px;
+    font-size: 16px;
+    box-shadow: none;
+    font-weight: 500;
+    border-radius: 6px;
+    overflow: hidden;
+}
+.srp-accordian .accordion-button:focus{
+    box-shadow: none;
+}
+.srp-accordian .accordion-body {
+    padding: 10px 25px;
+    font-size: 15px;
+    line-height: 24px;
+    background:var(--light-grey);
+    margin-top: 10px;
+}
+.srp-accordian .accordion-item{
+    border: none;
+    border-radius: 0;
+    margin-bottom: 15px;
+    position: relative;
+}
+.accordion-button:after{
+    display: none;
+}
+.srp-accordian .accordion-button .fa-plus {
+    font-size: 18px;
+    position: absolute;
+    right: 10px;
+    transition: transform .3s ease-in-out;
+}
+.srp-accordian .accordion-button[aria-expanded="true"] .fa-plus {
+    transform: rotate(-45deg);
+}
+.srp-accordian .accordion-button[aria-expanded="true"]{
+    color: var(--color-3);
+}

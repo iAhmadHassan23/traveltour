@@ -1,0 +1,66 @@
+.remove-image {
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-radius: 10em;
+    padding: 2px 6px 3px;
+    text-decoration: none;
+    font: 700 21px/20px sans-serif;
+    background: #555;
+    border: 3px solid #fff;
+    color: #FFF;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5), inset 0 2px 4px rgba(0, 0, 0, 0.3);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+    -webkit-transition: background 0.5s;
+    transition: background 0.5s;
+}
+
+.img-popup {
+    height: 100%;
+    cursor: pointer;
+    transition: transform 1s;
+    object-fit: cover;
+}
+
+.col-sm-4 label {
+    overflow: hidden;
+    position: relative;
+    height: 100%;
+    display: block;
+}
+
+.imgbgchk:checked + label > .tick_container {
+    opacity: 1;
+}
+
+.imgbgchk:checked + label > img {
+    transform: scale(1.25);
+    opacity: 0.3;
+}
+
+.tick_container {
+    transition: .5s ease;
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    cursor: pointer;
+    text-align: center;
+}
+
+.tick {
+    background-color: #4CAF50;
+    color: white;
+    font-size: 16px;
+    padding: 6px 12px;
+    height: 40px;
+    width: 40px;
+    border-radius: 100%;
+}
+
+.sh-shadow{
+    padding: 10px;
+    box-shadow: 0 0 4px #8b8b8b;
+}

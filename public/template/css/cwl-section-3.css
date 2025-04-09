@@ -1,0 +1,83 @@
+
+/*** 
+====================================================================
+	Choose Sec
+====================================================================
+***/
+.cwl-choose-col{
+	font-size: 14px;
+}
+.cwl-choose-col .cwl-ico{
+	width: 80px;
+	height: 80px;
+	background: rgba(225, 36, 84, .3);
+}
+.cwl-choose-col:hover .cwl-ico{
+		-webkit-animation: .75s linear tm-animation-buzz-out;
+    animation: .75s linear tm-animation-buzz-out;
+}
+.cwl-choose-col .cwl-ico:before {
+    content: "";
+    position: absolute;
+    left: -6px;
+    top: -3px;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 1px solid rgba(225, 36, 84, .8);
+}
+.cwl-choose-col .cwl-number{
+	font-size: 20px;
+}
+@keyframes tm-animation-buzz-out {
+    10% {
+        -webkit-transform: translateX(3px) rotate(2deg);
+        transform: translateX(3px) rotate(2deg)
+    }
+
+    20% {
+        -webkit-transform: translateX(-3px) rotate(-2deg);
+        transform: translateX(-3px) rotate(-2deg)
+    }
+
+    30% {
+        -webkit-transform: translateX(3px) rotate(2deg);
+        transform: translateX(3px) rotate(2deg)
+    }
+
+    40% {
+        -webkit-transform: translateX(-3px) rotate(-2deg);
+        transform: translateX(-3px) rotate(-2deg)
+    }
+
+    50% {
+        -webkit-transform: translateX(2px) rotate(1deg);
+        transform: translateX(2px) rotate(1deg)
+    }
+
+    60% {
+        -webkit-transform: translateX(-2px) rotate(-1deg);
+        transform: translateX(-2px) rotate(-1deg)
+    }
+
+    70% {
+        -webkit-transform: translateX(2px) rotate(1deg);
+        transform: translateX(2px) rotate(1deg)
+    }
+
+    80% {
+        -webkit-transform: translateX(-2px) rotate(-1deg);
+        transform: translateX(-2px) rotate(-1deg)
+    }
+
+    90% {
+        -webkit-transform: translateX(1px) rotate(0);
+        transform: translateX(1px) rotate(0)
+    }
+
+    to {
+        -webkit-transform: translateX(-1px) rotate(0);
+        transform: translateX(-1px) rotate(0)
+    }
+}

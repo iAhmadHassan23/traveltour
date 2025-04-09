@@ -1,0 +1,50 @@
+
+
+
+/*** 
+====================================================================
+    Faq Sec
+====================================================================
+***/
+.cwl-accordian .accordion-button{
+    background: transparent;
+    color: var(--dark-grey);
+    padding: 10px 40px 10px 22px;
+    font-size: 17px;
+    box-shadow: none;
+}
+.cwl-accordian .accordion-button:focus{
+    box-shadow: none;
+}
+.cwl-accordian .accordion-body {
+    padding: 10px 22px;
+    background: transparent;
+    color: #000;
+    font-size: 14px;
+    line-height: 24px;
+}
+.cwl-accordian .accordion-item{
+    border: 1px solid var(--light-grey);
+    border-radius: 0;
+    margin-bottom: 10px;
+}
+.accordion-button::after{
+    display: none;
+}
+.cwl-accordian .accordion-button .fa-chevron-down{
+    font-size: 18px;
+    position: absolute;
+    right: 10px;
+    transition: transform .3s ease-in-out;
+}
+.cwl-accordian .accordion-button[aria-expanded="true"] .fa-chevron-down {
+    transform: rotate(-180deg);
+    color: var(--primary-color);
+}
+.cwl-accordian .accordion-button[aria-expanded="true"]{
+    color: var(--primary-color);
+}
+.accordion-item:has(.accordion-button[aria-expanded="true"]){
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    border-color: #f8f8f8;
+}

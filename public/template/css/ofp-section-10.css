@@ -1,0 +1,41 @@
+/*** 
+====================================================================
+	Of Project Sec
+====================================================================
+***/
+.ofp-project-block {
+	gap: 8px;
+}
+.ofp-project-block:after {
+    content: "";
+    width: 380px;
+    height: 350px;
+    right: 0;
+    top: -30%;
+    position: absolute;
+    background: url(images/bubble-img.png) no-repeat center;
+    opacity: 20%;
+    z-index: -1;
+    background-size: contain;
+}
+.ofp-project-block .ofp-project-item-content {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(47 95 173 / .8);
+    width: 100%;
+    height: 0;
+    padding: 0 35px;
+    opacity: 0;
+    transition: 0.25s ease-in-out;
+    font-size: 14px;
+    line-height: 23px;
+}
+.ofp-project-block .ofp-project-item-content h3{
+	font-size: 26px;
+}
+.ofp-project-block .ofp-project-item:hover .ofp-project-item-content {
+    opacity: 1;
+    height: 100%;
+}
+

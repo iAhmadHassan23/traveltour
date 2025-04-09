@@ -1,0 +1,20 @@
+
+/*** 
+====================================================================
+    Contact Sec
+====================================================================
+***/
+.cwl-contact-sec h2{
+    font-size: 30px;
+}
+.cwl-contact-info-wrapper svg{
+    color: var(--primary-color);
+}
+.cwl-contact-info-wrapper .cwl-contact-List{
+    color: var(--black);
+    padding: 0 15px;
+}
+.cwl-contact-info-wrapper .cwl-contact-List span,
+.cwl-contact-info-wrapper .cwl-contact-List a{
+    color: var(--grey);
+}

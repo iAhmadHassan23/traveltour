@@ -1,0 +1,30 @@
+
+/*** 
+====================================================================
+	Page Banner 
+====================================================================
+***/
+.cwl-page-banner{
+	padding: 170px 0px 50px;
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	min-height: 500px;
+}
+.cwl-banner-caption {
+    z-index: 1;
+    font-size: 18px;
+    padding: 60px 25px;
+}
+.explore-btn{
+	font-size: 14px;
+	width: fit-content;
+	color: var(--primary-color);
+}
+.explore-btn i{
+	width: 30px;
+    height: 30px;
+    border: 1px solid var(--primary-color);
+    font-size: 12px;
+}
+

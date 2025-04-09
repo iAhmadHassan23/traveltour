@@ -1,0 +1,32 @@
+.srp-page-banner {
+    min-height: 350px;
+    background-image: url('../images/srp-home-banner.jpg');
+}
+.srp-page-banner.bg-overlay:after{
+    opacity: .95;
+    background: var(--color-1);
+}
+.srp-page-banner .srp-banner-content{
+    padding-bottom: 35px;
+}
+.srp-page-banner .srp-banner-img-holder  {
+    height: 100%;
+    border: 6px solid var(--white-color);
+    border-radius: 10px;
+    overflow: hidden;
+}
+.srp-page-banner .srp-section-caption{
+    line-height: 26px;
+    background: var(--color-2);
+    padding: 30px 20px;
+    border-radius: 10px;
+    position: relative;
+    top: 35px;
+    background: linear-gradient(90deg, rgba(255, 237, 134, 1) 0%, rgb(255 172 66) 100%);
+}
+.srp-page-banner .srp-section-caption h1{
+    font-size: 34px;
+}
+.srp-page-banner .srp-section-caption p{
+    margin-bottom: 0;
+}

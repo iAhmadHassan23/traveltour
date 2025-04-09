@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://alphasmashrepair.com.au/sitemap.xml
+Sitemap: https://alphasmashrepair.com.au/sitemap_pages.xml
+Sitemap: https://alphasmashrepair.com.au/sitemap_services.xml
+Sitemap: https://alphasmashrepair.com.au/sitemap_blogs.xml

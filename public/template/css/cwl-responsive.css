@@ -1,0 +1,78 @@
+@media (min-width: 1200px){
+  .container{
+    max-width: 1200px;
+  }
+  .ws-about-sec .container{
+      max-width: 1320px;
+  }
+}
+@media (max-width: 1199px){
+  .ws-feature-col{
+    padding: 40px 30px 25px;
+  }
+}
+@media (max-width: 991px){
+  .ws-logo img {
+    height: 45px;
+  }
+  .ws-page-banner{
+    min-height: 380px;
+  }
+  h1 {
+    font-size: 34px;
+  }
+  h2 {
+    font-size: 30px;
+  }
+  .ws-feature-col{
+    margin-bottom: 30px;
+    height: calc(100% - 30px);
+  }
+}
+@media (max-width: 767px) {
+  .ws-page-banner {
+    min-height: 320px;
+  }
+  h1 {
+    font-size: 30px;
+  }
+  h2 {
+    font-size: 26px;
+  }
+  .ws-page-nav {
+    position: absolute;
+    left: 0;
+    top: 100%;
+    width: 100%;
+    background-color:var(--color-1);
+    z-index: 1;
+  }
+  .ws-page-nav .nav-item{
+    margin-left: 0;
+  }
+  .ws-page-nav .ws-navbar .nav-link{
+    padding: 6px 10px;
+    color: #fff;
+    font-size: 14px;
+    line-height: 20px;
+    border-bottom: 1px solid #7960bb;
+  }
+  .ws-page-nav .ws-navbar .nav-link:hover {
+    background:#fff;
+    color: var(--color-1);
+  }
+  .ws-footer-page .ws-f-contact-list li,
+  .social-mdeia-icons li{
+    margin-bottom: 15px;
+  }
+  .ws-content-sec .ws-content-wrapper h2 {
+    font-size: 20px;
+  }
+  .ws-content-sec .ws-content-wrapper{
+    padding: 20px 15px;
+  }
+  .ws-contact-sec .ws-contact-list li{
+    width: 100%;
+    margin: 0 0 20px 0;
+  }
+}

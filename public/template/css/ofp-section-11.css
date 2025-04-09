@@ -1,0 +1,39 @@
+/*** 
+====================================================================
+	Of Testimonial Sec
+====================================================================
+***/
+.ofp-testimonial-col .client-review-content {
+    padding: 45px 26px;
+    box-shadow: -2px 0px 20px rgb(166 184 213 / 17%);
+    line-height: 25px;
+    font-size: 14px;
+    margin-bottom: 16px;
+}
+.ofp-testimonial-col .client-review-content:before {
+    content: "";
+    position: absolute;
+    bottom: -28px;
+    left: 0;
+    width: 29px;
+    height: 28px;
+    background: var(--white-color);
+    clip-path: polygon(0 0, 100% 0, 0 100%, 0% 100%);
+}
+.ofp-testimonial-col .client-review-content:after {
+    content: "";
+    bottom: 17px;
+    right: 45px;
+    position: absolute;
+    background: url(../images/comma-icon.png) no-repeat;
+    width: 60px;
+    height: 60px;
+    opacity: 30%;
+}
+.ofp-testimonial-col.client-info figure {
+    width: 80px;
+    height: 80px;
+}
+.ofp-testimonial-col .client-info .client-name{
+	font-size: 24px;
+}

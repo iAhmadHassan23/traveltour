@@ -1,0 +1,40 @@
+
+/*** 
+====================================================================
+	Blog
+====================================================================
+***/
+.cwl-blog-col{
+    color: var(--grey);
+    font-size: 14px;
+}
+.cwl-blog-col p{
+    border-bottom: 1px solid var(--grey);
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+}
+.cwl-blog-col .txt{
+    padding:15px;
+}
+.cwl-blog-col h2{
+    font-size: 20px;
+    margin-bottom: 15px;
+    font-weight: 500;
+}
+.cwl-blog-col h2 a{
+    color: var(--grey);
+}
+.cwl-blog-col:hover .img-holder img {
+    transform: rotate(-3deg) scale(1.1);
+}
+.cwl-blog-col .img-holder{
+    overflow: hidden;
+}
+.cwl-blog-col .img-holder img{
+    transition: all 0.4s ease-out 0s;
+}
+.cwl-blog-col .read-more{
+    color: var(--color-2);
+    font-size: 16px;
+    border-bottom: 1px solid var(--color-2);
+}

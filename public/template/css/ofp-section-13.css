@@ -1,0 +1,17 @@
+
+.ofp-content-col {
+    padding: 30px 15px;
+    height: 100%;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all .3s ease-in-out;
+}
+.ofp-content-col:hover{
+    background: var(--primary-color);
+}
+.ofp-content-col:hover .content{
+    color: var(--white-color);
+}
+.ofp-content-col p{
+	margin-bottom: 0;
+}

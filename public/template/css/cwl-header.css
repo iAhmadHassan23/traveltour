@@ -1,0 +1,63 @@
+
+/*** 
+====================================================================
+	Page Header
+====================================================================
+***/
+@keyframes slideDown {
+    from {
+        transform: translateY(-50%);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+.srp-page-header{
+	position: relative;
+        border-bottom: 1px solid rgba(255, 255, 255, .15);
+
+}
+.srp-page-header.is-sticky {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    animation: slideDown 0.5s ease-in-out;
+    width: 100%;
+    z-index: 9999;
+    box-shadow: 0 8px 20px 0 rgba(0,0,0,.1);
+    border: none;
+}
+.cwl-page-nav .nav-item{
+	position: relative;
+	margin-right: 25px;
+}
+.cwl-page-nav .cwl-navbar .nav-link{
+	padding: 0;
+	font-size: 16px;
+	font-weight: 600;
+	color: var(--white-color);
+	position: relative;
+    line-height: 80px;
+}
+/* .cwl-page-nav .cwl-navbar .nav-link:hover{
+	color: var(--primary-color);
+} */
+.cwl-page-nav .cwl-navbar .nav-link:after {
+    -webkit-transition: width .5s;
+    transition: width .5s;
+    content: "";
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 0;
+    height: 3px;
+    border-radius: 5px;
+    background: currentColor;
+    background-color: #ffe77c;
+}
+.cwl-page-nav .cwl-navbar .nav-link:hover:after {
+    right: auto;
+    left: 0;
+    width: 100%;
+}

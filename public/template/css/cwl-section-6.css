@@ -1,0 +1,31 @@
+
+/*** 
+====================================================================
+	Process Sec 
+====================================================================
+***/
+.cwl-process-col img{
+	box-shadow: 0 10px 20px rgba(0,0,0,.11);
+}
+.cwl-process-col .cwl-img-holder{
+	margin-bottom: 35px;
+}
+.cwl-process-col .post-read-more {
+    top: 25px;
+    left: 10%;
+}
+.cwl-process-col  .process-count{
+	width: 45px;
+	height: 45px;
+}
+.cwl-process-col .process-count span{
+	z-index: 99;
+}
+.cwl-process-col .process-count:before{
+	width: 57px;
+	height: 57px;
+}
+.cwl-process-col .process-count:after{
+	width: 69px;
+	height: 69px;
+}

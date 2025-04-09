@@ -1,0 +1,52 @@
+
+/*** 
+====================================================================
+	Testimonial Sec
+====================================================================
+***/
+.cwl-testimonial-sec:after{
+	position: absolute;
+	content: "";
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-image: url('../images/vwl-h7-team-bg.png');
+	height: 80%;
+	width: 100%;
+	z-index: -1;
+	    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+}
+.cwl-testimonial-block{
+	box-shadow: 0 19px 51px rgba(0,0,0,0.12);
+	padding: 60px;
+	font-size: 14px;
+	line-height: 24px;
+}
+.cwl-testimonial-col {
+    border: 1px solid #eee;
+    padding: 55px 33px 33px;
+    margin-top: 14px;
+}
+.cwl-testimonial-col{
+	color: var(--primary-color);
+}
+.testimonial-slider .slick-slide{
+	margin:0 20px ;
+}
+.cwl-testimonial-block .quote-ico {
+    position: absolute;
+    top: -14px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.testimonial-rating{
+	color: #ffc246;
+	font-size: 14px;
+}
+.cwl-testimonial-col .post-thumbnail img{
+	margin: 0 auto;
+}

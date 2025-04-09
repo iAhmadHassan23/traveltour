@@ -1,0 +1,68 @@
+.srp-tabs{
+    background: var(--white-color);
+    padding: 10px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+}
+.srp-tabs .nav-link:before {
+    content: '';
+    clip-path: polygon(75% 0, 100% 100%, 0% 100%, 0 0%, 0% 0);
+    transition: all .3s ease-in-out;
+    width: 150px;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: .06;
+    z-index: 1;
+    background-color: #3a4368;
+}
+.srp-tabs .nav-link.active:before {
+    opacity: .2;
+}
+.srp-tabs .nav-link {
+    padding: 30px;
+    border-bottom: 1px solid var(--light-grey);
+    margin: 0px;
+    background-color: #f7f7f7;
+    position: relative;
+        border-radius: 0;
+    color: var(--black);
+}
+.srp-tabs li:last-child .nav-link{
+    border: none;
+}
+.srp-tabs .nav-link.active{
+    background-color: var(--color-1);
+}
+.srp-tabs .nav-link.active .img-1{
+    display: none;
+}
+.srp-tabs .nav-link .img-active{
+    display: none;
+}
+.srp-tabs .nav-link.active .img-active{
+    display: block;
+}
+.srp-tabs .inner-content {
+    position: relative;
+    z-index: 1;
+    align-items: center;
+}
+.srp-tabs .text-content {
+    margin-left: 45px;
+    font-size: 14px;
+}
+.srp-tabs .text-content p{
+    margin-bottom: 0;
+}
+.srp-tabs .ico{
+    width: 80px;
+    min-width: 80px;
+}
+.srp-tabs .heading{
+    font-size: 18px;
+}
+.srp-choose-sec .srp-tab-content-holder{
+    font-size: 14px;
+    line-height: 25px;
+}

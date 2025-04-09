@@ -1,0 +1,17 @@
+/*** 
+====================================================================
+	Of About Us Sec
+====================================================================
+***/
+.ofp-about-text-col{
+	font-size: 15px;
+	line-height: 27px;
+}
+.ofp-about-text-col .ofp-call-number a{
+	color: var(--dark-blue);
+	font-size: 26px;
+}
+.ofp-about-text-col .btn{
+	font-size: 18px;
+	padding:10px 20px;
+}
