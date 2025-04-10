@@ -69,6 +69,11 @@ class WebsiteController extends Controller
 //
 //        return response($cssContent)->header('Content-Type', 'text/css');
 //    }
+
+    public function home(){
+        return view('home');
+    }
+
     public function contact(){
         return view("contact-us");
     }

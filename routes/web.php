@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\PaypalController;
 use App\Http\Controllers\SitemapController;
+use App\Http\Controllers\WebsiteController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,6 +15,8 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
+Route::get('/', [WebsiteController::class, 'home']);
 
 
 Route::get('login-user-test', function(){
