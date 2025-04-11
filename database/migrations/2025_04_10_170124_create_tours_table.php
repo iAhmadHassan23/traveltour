@@ -30,6 +30,12 @@ return new class extends Migration
             $table->longText('other_info')->nullable();
             $table->tinyInteger('status')->default(1);
             $table->tinyInteger('index_status')->default(1);
+            $table->string('meta_image', 150)->nullable();
+            $table->string('meta_title', 150)->nullable();
+            $table->string('meta_description', 150)->nullable();
+            $table->longText('media')->nullable();
+            $table->dateTime('published_at')->nullable();
+
 
 
             $table->timestamps();

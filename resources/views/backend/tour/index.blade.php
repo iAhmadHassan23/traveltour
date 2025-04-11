@@ -53,7 +53,7 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @forelse($tours as $blog)
+                                @forelse($tours as $tour)
                                     <tr>
                                         <td>{{ $tour->title }}</td>
                                         <td>{{ $tour->slug }}</td>

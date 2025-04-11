@@ -51,6 +51,22 @@ class BackendMenuServiceProvider extends ServiceProvider
             ]);
 
             $event->menu->add([
+                'text' => 'Tour Categories list',
+                'url'  => route('tour-category.index'),
+                'icon' => 'fas fa-fw fa-list',
+                'can'  => 'tour-category list'
+
+            ]);
+
+            $event->menu->add([
+                'text' => 'Tours',
+                'url'  => route('tour.index'),
+                'icon' => 'fas fa-fw fa-list',
+                'can'  => 'tours list'
+
+            ]);
+
+            $event->menu->add([
                 'text' => 'Pages',
                 'url'  => route('page.index'),
                 'icon' => 'fas fa-fw fa-file',

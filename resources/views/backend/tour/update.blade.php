@@ -136,27 +136,52 @@
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <div class="form-group">
-                                            <label>Short Description</label>
-                                            <input class="form-control" name="short_description"
-                                                   value="{{ $row->short_description ?? old('short_description')}}"
-                                                   type="text"
-                                                   placeholder="Enter meta title">
-                                            @error('short_description')
+                                            <label>Pickup</label>
+                                            <input type="text" name="pickup" class="form-control"
+                                                   value="{{ $row->pickup ?? old('pickup') }}"
+                                                   placeholder="Enter Number of Days...">
+                                            @error('pickup')
+                                            <div class="error text-danger">{{ $errors->first('pickup') }}</div>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label>Drop</label>
+                                            <input type="text" name="drop" value="{{ $row->drop ?? old('drop')}}"
+                                                   class="form-control" placeholder="Enter drop...">
+                                            @error('drop')
+                                            <div class="error text-danger">{{ $errors->first('drop') }}</div>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    
+                                    <div class="col-sm-12">
+                                        <div class="form-group">
+                                            <label>Itenary Overview</label>
+                                            <textarea name="itenary_overview" id="itenary_overview" class="form-control summernote"
+                                                      cols="30" rows="10"
+                                                      placeholder="">{!! isset($row) ? $row->itenary_overview : old('itenary_overview') !!}
+                                            </textarea>
+                                            @error('itenary_overview')
                                             <div
-                                                class="error text-danger">{{ $errors->first('short_description') }}</div>
+                                                class="error text-danger">{{ $errors->first('itenary_overview') }}</div>
                                             @enderror
                                         </div>
                                     </div>
                                     <div class="col-sm-12">
                                         <div class="form-group">
-                                            <label>Blog Body</label>
-                                            <textarea name="blog_body" id="blog" class="form-control summernote"
+                                            <label>Other Info</label>
+                                            <textarea name="other_info" id="other_info" class="form-control summernote"
                                                       cols="30" rows="10"
-                                                      placeholder="">{!! isset($row) ? $row->blog_body : old('blog_body') !!}
+                                                      placeholder="">{!! isset($row) ? $row->other_info : old('other_info') !!}
                                             </textarea>
-                                            @error('blog_body')
+                                            @error('other_info')
                                             <div
-                                                class="error text-danger">{{ $errors->first('blog_body') }}</div>
+                                                class="error text-danger">{{ $errors->first('other_info') }}</div>
                                             @enderror
                                         </div>
                                     </div>
@@ -208,15 +233,15 @@
                                     <div class="col-sm-12">
                                         <div class="form-group">
                                             <label>Category</label>
-                                            <select type="text" name="category_id" class="form-control">
+                                            <select type="text" name="tour_category_id" class="form-control">
                                                 <option value="">select category</option>
                                                 @foreach($categories as $category)
                                                     <option
-                                                        value="{{$category->id}}" {{ isset($row) ? $row->category_id == $category->id ? 'selected' : '' : ''  }}>{{ $category->title }}</option>
+                                                        value="{{$category->id}}" {{ isset($row) ? $row->tour_category_id == $category->id ? 'selected' : '' : ''  }}>{{ $category->title }}</option>
                                                 @endforeach
                                             </select>
-                                            @error('category_id')
-                                            <div class="error text-danger">{{ $errors->first('category_id') }}</div>
+                                            @error('tour_category_id')
+                                            <div class="error text-danger">{{ $errors->first('tour_category_id') }}</div>
                                             @enderror
                                         </div>
                                     </div>

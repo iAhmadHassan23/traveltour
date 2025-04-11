@@ -5,6 +5,7 @@ namespace App\Models;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Tour extends Model
 {
@@ -19,8 +20,9 @@ class Tour extends Model
         return $this->belongsTo(TourCategory::class);
     }
 
-    public function scopePublished($query){
-        return $query->where('status', 1)->where(function($q){
+    public function scopePublished($query)
+    {
+        return $query->where('status', 1)->where(function ($q) {
             $q->where('published_at', '<=', Carbon::now())
                 ->orWhereNull('published_at');
         });
@@ -30,5 +32,4 @@ class Tour extends Model
     {
         $query->where('index_status', 1);
     }
-    
 }

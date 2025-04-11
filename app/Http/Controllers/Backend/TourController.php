@@ -64,7 +64,7 @@ class TourController extends Controller
             'index_status' => ['required'],
             'status'       => ['required'],
         ], [
-            'category_id.required' => 'The category field is required',
+            'tour_category_id.required' => 'The category field is required',
             //                                            'video_url.required'   => 'The video url field is required',
         ]);
 
