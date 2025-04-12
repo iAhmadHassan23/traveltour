@@ -13,12 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('itenaries', function (Blueprint $table) {
+        Schema::create('highlights', function (Blueprint $table) {
             $table->id();
-            $table->string('day_number');
-            $table->string('title');
-            $table->longText('short_description');
             $table->unsignedBigInteger('tour_id');
+            $table->string('title');
             $table->foreign('tour_id')->references('id')->on('tours')
                 ->onDelete('cascade');
             $table->timestamps();
@@ -32,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('itenaries');
+        Schema::dropIfExists('highlights');
     }
 };

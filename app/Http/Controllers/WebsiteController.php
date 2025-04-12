@@ -76,27 +76,27 @@ class WebsiteController extends Controller
 
     public function home(Request $request)
     {
-        $honeymoon_tours = Tour::whereHas('tour_category', function ($query) {
+        $honeymoon_tours = Tour::whereHas('tour_categories', function ($query) {
             $query->where('title', 'Honeymoon Trips');
         })->get();
 
-        $international_tours = Tour::whereHas('tour_category', function ($query) {
+        $international_tours = Tour::whereHas('tour_categories', function ($query) {
             $query->where('title', 'International Trips');
         })->get();
 
-        $domestic_tours = Tour::whereHas('tour_category', function ($query) {
+        $domestic_tours = Tour::whereHas('tour_categories', function ($query) {
             $query->where('title', 'Domestic Trips');
         })->get();
 
-        $leisure_luxury_tours = Tour::whereHas('tour_category', function ($query) {
+        $leisure_luxury_tours = Tour::whereHas('tour_categories', function ($query) {
             $query->where('title', 'Leisure Luxury Trips');
         })->get();
 
-        $family_tours = Tour::whereHas('tour_category', function ($query) {
+        $family_tours = Tour::whereHas('tour_categories', function ($query) {
             $query->where('title', 'Family Trips');
         })->get();
 
-        $adventure_tours = Tour::whereHas('tour_category', function ($query) {
+        $adventure_tours = Tour::whereHas('tour_categories', function ($query) {
             $query->where('title', 'Adventure Trips');
         })->get();
         return view('home', compact(
@@ -111,7 +111,7 @@ class WebsiteController extends Controller
 
     public function tour_details($slug)
     {
-        $tour = Tour::with('tour_category', 'itenaries')->where('slug', $slug)->first();
+        $tour = Tour::with('tour_categories', 'itenaries', 'highlights')->where('slug', $slug)->first();
         $itenary = Itenary::with('itenaryExclusives')->where('tour_id', $tour->id)->first();
         if ($tour->media) {
             $media = json_decode($tour->media);

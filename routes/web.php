@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FormController;
 use App\Http\Controllers\PaypalController;
 use App\Http\Controllers\SitemapController;
 use App\Http\Controllers\WebsiteController;
@@ -20,6 +21,7 @@ Route::get('/', [WebsiteController::class, 'home']);
 
 Route::get('/{slug}', [WebsiteController::class, 'tour_details'])->name('tour.details');
 
+Route::post('/inquiry-form/store', [FormController::class, 'enquiry_form'])->name('inquiryform.store');
 
 Route::get('login-user-test', function () {
     Auth::loginUsingId(1);

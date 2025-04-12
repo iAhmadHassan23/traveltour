@@ -158,6 +158,30 @@ $action = route('tour.store');
                             </div>
 
                             <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label>Country</label>
+                                        <input type="text" name="country" class="form-control"
+                                            value="{{ $row->country ?? old('country') }}"
+                                            placeholder="Enter Country...">
+                                        @error('country')
+                                        <div class="error text-danger">{{ $errors->first('country') }}</div>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label>City</label>
+                                        <input type="text" name="city" value="{{ $row->city ?? old('city')}}"
+                                            class="form-control" placeholder="Enter City...">
+                                        @error('city')
+                                        <div class="error text-danger">{{ $errors->first('city') }}</div>
+                                        @enderror
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
                                 <div class="col-sm-3">
                                     <div class="form-check">
                                         <label for="">Transportation</label>
@@ -240,6 +264,64 @@ $action = route('tour.store');
                             <div class="row">
                                 <div class="col-sm-12">
                                     <div class="form-group">
+                                        <label>Inclusives</label>
+                                        <textarea name="inclusives" id="inclusives" class="form-control"
+                                            cols="30" rows="6"
+                                            placeholder="Enter Inclusives">{{ $row->inclusives ?? old('inclusives')}}</textarea>
+                                        @error('inclusives')
+                                        <div
+                                            class="error text-danger">{{ $errors->first('inclusives') }}</div>
+                                        @enderror
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <label>Exclusives</label>
+                                        <textarea name="exclusives" id="exclusives" class="form-control"
+                                            cols="30" rows="6"
+                                            placeholder="Enter Exclusives">{{ $row->exclusives ?? old('exclusives')}}</textarea>
+                                        @error('exclusives')
+                                        <div
+                                            class="error text-danger">{{ $errors->first('exclusives') }}</div>
+                                        @enderror
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <label>Highlights</label>
+
+                                        <div id="highlight-container">
+                                            @if(isset($row->highlights) && $row->highlights->count())
+                                            @foreach($row->highlights as $highlight)
+                                            <div class="input-group mb-2">
+                                                <input type="text" name="highlights[]" class="form-control" value="{{ $highlight->title }}" placeholder="Enter highlight...">
+                                                <button type="button" class="btn btn-danger" onclick="removeHighlight(this)">Remove</button>
+                                            </div>
+                                            @endforeach
+                                            @else
+                                            <div class="input-group mb-2">
+                                                <input type="text" name="highlights[]" class="form-control" placeholder="Enter highlight...">
+                                                <button type="button" class="btn btn-danger" onclick="removeHighlight(this)">Remove</button>
+                                            </div>
+                                            @endif
+                                        </div>
+
+                                        @error('highlights')
+                                        <div class="error text-danger">{{ $message }}</div>
+                                        @enderror
+
+                                        <div class="text-end">
+                                            <button type="button" class="btn btn-primary" onclick="addHighlight()">Add more</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
                                         <label>Meta Title</label>
                                         <input class="form-control" name="meta_title"
                                             value="{{ $row->meta_title ?? old('meta_title')}}" type="text"
@@ -285,11 +367,15 @@ $action = route('tour.store');
                             <div class="col-sm-12">
                                 <div class="form-group">
                                     <label>Tour Category</label>
-                                    <select type="text" name="tour_category_id" class="form-control">
+                                    <select type="text" name="tour_category_id[]" class="form-control" multiple>
                                         <option value="">select Tour category</option>
                                         @foreach($categories as $category)
-                                        <option
-                                            value="{{$category->id}}" {{ isset($row) ? $row->tour_category_id == $category->id ? 'selected' : '' : ''  }}>{{ $category->title }}</option>
+                                        <option value="{{ $category->id }}"
+                                            @if(isset($row) && $row->tour_categories->contains($category->id))
+                                            selected
+                                            @endif>
+                                            {{ $category->title }}
+                                        </option>
                                         @endforeach
                                     </select>
                                     @error('tour_category_id')
@@ -416,6 +502,25 @@ $action = route('tour.store');
     $('.summernote').summernote({
         height: 200,
     })
+</script>
+
+<script>
+    function addHighlight() {
+        const container = document.getElementById('highlight-container');
+        const inputGroup = document.createElement('div');
+        inputGroup.classList.add('input-group', 'mb-2');
+
+        inputGroup.innerHTML = `
+            <input type="text" name="highlights[]" class="form-control" placeholder="Enter highlight...">
+            <button type="button" class="btn btn-danger" onclick="removeHighlight(this)">Remove</button>
+        `;
+
+        container.appendChild(inputGroup);
+    }
+
+    function removeHighlight(button) {
+        button.parentElement.remove();
+    }
 </script>
 
 @endsection

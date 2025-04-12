@@ -15,14 +15,19 @@ class Tour extends Model
     /**
      * Get the category that owns the blog.
      */
-    public function tour_category()
+    public function tour_categories()
     {
-        return $this->belongsTo(TourCategory::class);
+        return $this->belongsToMany(TourCategory::class, 'tour_category_tour', 'tour_id', 'tour_category_id');
     }
 
     public function itenaries(): HasMany
     {
         return $this->hasMany(Itenary::class);
+    }
+
+    public function highlights(): HasMany
+    {
+        return $this->hasMany(Highlights::class);
     }
 
     public function scopePublished($query)

@@ -49,7 +49,7 @@ class TourController extends Controller
         $validated = $request->validate([
             'title'        => ['required', 'string', 'max:255'],
             'slug'         => ['required', 'alpha_dash', 'unique:tours'],
-            'tour_category_id'  => ['required'],
+            'tour_category_id'  => ['required', 'array'],
             'price' => ['required'],
             'discounted_price' => ['nullable'],
             'number_of_days' => ['nullable'],
@@ -67,7 +67,9 @@ class TourController extends Controller
             'meals' => ['nullable'],
             'stay_included' => ['nullable'],
             'sight_seeing' => ['nullable'],
-            'assistance' => ['nullable']
+            'assistance' => ['nullable'],
+            'highlights' => ['nullable', 'array'],
+            'highlights.*' => ['nullable', 'string', 'max:255']
         ], [
             'tour_category_id.required' => 'The category field is required',
             //                                            'video_url.required'   => 'The video url field is required',
@@ -78,6 +80,19 @@ class TourController extends Controller
         try {
             $data['media'] = json_encode($request->gallery);
             $tour = Tour::create($data);
+
+            $tour->tour_categories()->attach($request->tour_category_id);
+
+            if ($request->has('highlights')) {
+                foreach ($request->highlights as $highlight) {
+                    if (!empty($highlight)) {
+                        $tour->highlights()->create([
+                            'title' => $highlight
+                        ]);
+                    }
+                }
+            }
+
             DB::commit();
             return redirect()->back()->with('success', 'Tour added successfully!');
         } catch (Exception $ex) {
@@ -121,8 +136,8 @@ class TourController extends Controller
     {
         $validated = $request->validate([
             'title'        => ['required', 'string', 'max:255'],
-            'slug'         => ['required', 'alpha_dash', Rule::unique('blogs')->ignore($id)],
-            'tour_category_id'  => ['required'],
+            'slug'         => ['required', 'alpha_dash', Rule::unique('tours')->ignore($id)],
+            'tour_category_id'  => ['required', 'array'],
             'price' => ['required'],
             'discounted_price' => ['nullable'],
             'number_of_days' => ['nullable'],
@@ -137,7 +152,9 @@ class TourController extends Controller
             'meals' => ['nullable'],
             'stay_included' => ['nullable'],
             'sight_seeing' => ['nullable'],
-            'assistance' => ['nullable']
+            'assistance' => ['nullable'],
+            'highlights' => ['nullable', 'array'],
+            'highlights.*' => ['nullable', 'string', 'max:255'],
         ], [
             'tour_category_id.required' => 'The tour category field is required',
         ]);
@@ -147,12 +164,29 @@ class TourController extends Controller
             $request[$field] = $request->has($field) ? 1 : 0;
         }
 
-        $data      = $request->except('_token', '_method', 'files', 'gallery');
+        $data = $request->except('_token', '_method', 'files', 'gallery', 'tour_category_id', 'highlights');
+
         DB::beginTransaction();
 
         try {
             $data['media'] = json_encode($request->gallery);
-            $tour          = Tour::where('id', $id)->update($data);
+
+            $tour = Tour::where('id', $id)->update($data);
+
+            $tourInstance = Tour::find($id);
+            $tourInstance->tour_categories()->sync($request->tour_category_id);
+
+            $tourInstance->highlights()->delete(); 
+            if ($request->has('highlights')) {
+                foreach ($request->highlights as $highlight) {
+                    if ($highlight) {
+                        $tourInstance->highlights()->create([
+                            'title' => $highlight,
+                        ]);
+                    }
+                }
+            }
+
             DB::commit();
             return redirect()->back()->with('success', 'Tour updated successfully!');
         } catch (Exception $ex) {

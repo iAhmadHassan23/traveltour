@@ -48,7 +48,9 @@ class ItenaryController extends Controller
             'day_number' => ['required'],
             'title' => ['required'],
             'short_description' => ['required'],
-            'tour_id' => ['required']
+            'tour_id' => ['required'],
+            'inclusives' => ['nullable'],
+            'exclusives' => ['nullable']
         ]);
 
         DB::beginTransaction();
@@ -123,7 +125,9 @@ class ItenaryController extends Controller
             'day_number' => ['required'],
             'title' => ['required'],
             'short_description' => ['required'],
-            'tour_id' => ['required']
+            'tour_id' => ['required'],
+            'inclusives' => ['nullable'],
+            'exclusives' => ['nullable']
         ]);
         DB::beginTransaction();
 

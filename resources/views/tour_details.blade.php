@@ -6,7 +6,6 @@
 @section('mainContent')
 
 
-
 <div class="container mx-auto max-w-screen-xl px-2 my-4">
     <div class="mb-4">
         <nav aria-label="Breadcrumb" class="overflow-x-auto">
@@ -106,7 +105,7 @@
                     </div>
                     <div>
                         <div class="text-sm d-block mb-0">Pickup / Drop</div>
-                        <div class="font-medium">@if(isset($tour->pickup)) {{ $tour->pickup}} @endif </div> / <div class="font-medium">@if(isset($tour->drop)) {{ $tour->drop}} @endif </div>
+                        <div class="font-medium">@if(isset($tour->pickup)) {{ $tour->pickup}} @endif / @if(isset($tour->drop)) {{ $tour->drop}} @endif </div>
                     </div>
                 </div>
             </div>
@@ -278,106 +277,44 @@
                             <div>
                                 <h2 class="text-2xl font-semibold underline underline-offset-2 decoration-yellow-400 decoration-2 mb-2 mt-8">Inclusions</h2>
                                 <div class="list-inside list-disc">
-                                    <ul class="list-inside list-disc">
-                                        <li>Travel as per the itinerary in a hatchback/SUV (as per group size).</li>
-                                        <li>Accommodation for 7 nights, including 2 nights in Gangtok, 1 night in Lachung, 2 nights in Pelling, and 2 nights in Darjeeling.</li>
-                                        <li>Meals, including breakfast for all stays and APAI (All Meals) in North Sikkim.</li>
-                                        <li>Driver charges, permits, tolls, fuel, and parking charges.</li>
-                                        <li>Airport/railway station pickup and drop.</li>
-                                    </ul>
+                                {!! preg_replace('/<p><br><\/p>/', '', $tour->inclusives ?? '') !!}</h5>
+                                   
                                 </div>
                             </div>
                             <div>
                                 <h2 class="text-2xl font-semibold underline underline-offset-2 decoration-yellow-400 decoration-2 mb-2 mt-8">Exclusions</h2>
                                 <div class="list-inside list-disc">
-                                    <ul class="list-inside list-disc">
-                                        <li>GST (5%) applicable extra.</li>
-                                        <li>Vehicle and permit charges for visiting Nathu-La Pass and Zero Point.</li>
-                                        <li>Any food and beverages not included in the package, such as alcoholic drinks, mineral water, and highway meals/refreshments.</li>
-                                        <li>Personal expenses like tips to drivers, entry fees to monuments and monasteries, camera/video camera charges, laundry, telephone bills, etc.</li>
-                                        <li>Costs arising due to natural calamities like landslides, roadblocks, etc. (to be borne by the customer on the spot).</li>
-                                        <li>Anything not mentioned in the inclusions.</li>
-                                        <li>Airfares/train tickets.</li>
-                                    </ul>
+                                {!! preg_replace('/<p><br><\/p>/', '', $tour->exclusives ?? '') !!}</h5>
+                                    
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+                @if($tour->highlights)
                 <div class="mt-8 tab-content hidden" id="highlights">
                     <div class="mt-4 text-center font-semibold">
+                        @foreach($tour->highlights as $highlight)
                         <div class="border-2 border-yellow-300 rounded-3xl text-center py-12 px-10 shadow shadow-yellow-300 mx-2 my-2 inline-block ">
-                            <p>Cellular Jail</p>
+                            <p>{{ $highlight->title ?? ''}}</p>
                         </div>
-                        <div class="border-2 border-yellow-300 rounded-3xl text-center py-12 px-10 shadow shadow-yellow-300 mx-2 my-2 inline-block ">
-                            <p>Light and Sound Show in Cellular Jail</p>
-                        </div>
-                        <div class="border-2 border-yellow-300 rounded-3xl text-center py-12 px-10 shadow shadow-yellow-300 mx-2 my-2 inline-block ">
-                            <p>Radhanagar Beach</p>
-                        </div>
-                        <div class="border-2 border-yellow-300 rounded-3xl text-center py-12 px-10 shadow shadow-yellow-300 mx-2 my-2 inline-block ">
-                            <p>Elephant Beach</p>
-                        </div>
-                        <div class="border-2 border-yellow-300 rounded-3xl text-center py-12 px-10 shadow shadow-yellow-300 mx-2 my-2 inline-block ">
-                            <p>snorkeling</p>
-                        </div>
-                        <div class="border-2 border-yellow-300 rounded-3xl text-center py-12 px-10 shadow shadow-yellow-300 mx-2 my-2 inline-block ">
-                            <p>scuba diving</p>
-                        </div>
-                        <div class="border-2 border-yellow-300 rounded-3xl text-center py-12 px-10 shadow shadow-yellow-300 mx-2 my-2 inline-block ">
-                            <p>sea walking</p>
-                        </div>
+                        @endforeach
+                        
                     </div>
                 </div>
+                @endif
                 <div class="mt-8 tab-content hidden" id="other-info">
                     <div>
-                        <div>
-                            <h2 class="text-xl font-semibold">Things to Carry</h2>
-                            <div>
-                                <ul class="list-inside list-disc">
-                                    <li>Sunscreen and moisturiser&nbsp;</li>
-                                    <li>Suitable beach clothes</li>
-                                    <li>Valid ID proof</li>
-                                    <li>Camera&nbsp;</li>
-                                    <li>Cash while visiting havelock or Neil Island</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div>
-                            <h2 class="text-xl font-semibold">Cancellation Policy</h2>
-                            <div>
-                                <p><span style="background-color: var(--bs-body-bg); font-size: var(--bs-body-font-size); font-weight: var(--bs-body-font-weight); text-align: var(--bs-body-text-align);">At EnjoyKarado.com, we strive to provide a fair and transparent cancellation policy for our valued customers. Please review the following guidelines regarding cancellations and refunds for our services.</span><br></p>
-                                <p><br></p>
-                                <p><span style="background-color: var(--bs-body-bg); font-size: var(--bs-body-font-size); text-align: var(--bs-body-text-align);"><b>Cancellation Timelines and Charges:</b></span><br></p>
-                                <ul class="list-inside list-disc">
-                                    <li>If the cancellation is made 30 days before the start date of the trip 50% of the trip cost will be charged as cancellation fees</li>
-                                    <li>If the cancellation is made 15-30 days before the start date of the trip 75% of the trip cost will be charged as cancellation fees</li>
-                                    <li>If the cancellation is made 0-15 days before the start date of the trip 100% of the trip cost will be charged as cancellation fees&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</li>
-                                </ul>
-                                <p>Refund will be made interms of Credit note.</p>
-                                <p><b>Refund:</b></p>
-                                <ul class="list-inside list-disc">
-                                    <li>In case of refund it will take 7-15 days to reflect amount in payment source</li>
-                                </ul>
-                                <p><b>Non-Refundable Deposits:</b></p>
-                                <p>&nbsp; &nbsp; &nbsp; &nbsp; Some services may require a non-refundable deposit or booking fee. This amount is non-refundable under all circumstances.</p>
-                                <p><br></p>
-                                <p><b>COVID-19 Flexibility:</b></p>
-                                <p>&nbsp; &nbsp; &nbsp; &nbsp; For cancellations related to COVID-19, we offer flexible options for rescheduling or providing credits for future travel. Reach out to us for assistance.</p>
-                                <p><br></p>
-                                <p><b>Special Circumstances:</b></p>
-                                <p>&nbsp; &nbsp; &nbsp; &nbsp; In cases of natural disasters, political unrest, or other unforeseen events, we will work with you to provide the best possible resolution, which may include rescheduling, cancellation, or credits for future travel.</p>
-                                <p><br></p>
-                                <p><b>Communication of Cancellation:</b></p>
-                                <p>&nbsp; &nbsp; &nbsp; &nbsp; All cancellations must be communicated to EnjoyKarado.com through email at contact@enjoykarado.com or by calling our customer support helpline.</p>
-                                <p><br></p>
-                                <p><b>NOTE: We recommend reviewing the cancellation policy before making a booking. By confirming a booking with EnjoyKarado.com, you acknowledge and agree to abide by this cancellation policy.</b></p>
-                            </div>
-                        </div>
+                    {!! preg_replace('/<p><br><\/p>/', '', $tour->other_info ?? '') !!}</h5>
                     </div>
                 </div>
             </div>
         </div>
+        @php
+            $price = floatval(str_replace(',', '', $tour->price));
+            $discounted = floatval(str_replace(',', '', $tour->discounted_price));
+            $saved_price = $discounted - $price;
+            @endphp
         <div class="col-span-10 md:col-span-3">
             <div class="border-2 border-yellow-300 rounded-3xl shadow shadow-yellow-300 p-10 relative">
                 <h2 class="text-3xl font-semibold underline underline-offset-2 decoration-yellow-400 decoration-2 mb-4">Enquire</h2>
@@ -385,37 +322,31 @@
                     <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
                         <path d="m20.749 12 1.104-1.908a1 1 0 0 0-.365-1.366l-1.91-1.104v-2.2a1 1 0 0 0-1-1h-2.199l-1.103-1.909a1.008 1.008 0 0 0-.607-.466.993.993 0 0 0-.759.1L12 3.251l-1.91-1.105a1 1 0 0 0-1.366.366L7.62 4.422H5.421a1 1 0 0 0-1 1v2.199l-1.91 1.104a.998.998 0 0 0-.365 1.367L3.25 12l-1.104 1.908a1.004 1.004 0 0 0 .364 1.367l1.91 1.104v2.199a1 1 0 0 0 1 1h2.2l1.104 1.91a1.01 1.01 0 0 0 .866.5c.174 0 .347-.046.501-.135l1.908-1.104 1.91 1.104a1.001 1.001 0 0 0 1.366-.365l1.103-1.91h2.199a1 1 0 0 0 1-1v-2.199l1.91-1.104a1 1 0 0 0 .365-1.367L20.749 12zM9.499 6.99a1.5 1.5 0 1 1-.001 3.001 1.5 1.5 0 0 1 .001-3.001zm.3 9.6-1.6-1.199 6-8 1.6 1.199-6 8zm4.7.4a1.5 1.5 0 1 1 .001-3.001 1.5 1.5 0 0 1-.001 3.001z"></path>
                     </svg>
-                    <div>Save Rs. 7,000</div>
+                    <div>Save Rs. {{$saved_price}}</div>
                 </div>
                 <div class="text-2xl">
-                    <div class="flex place-items-center"><span class="text-sm line-through me-2 text-gray-500">Rs. 36,499</span><span class="text-green-500 font-semibold">Rs. 29,499</span></div>
+                    <div class="flex place-items-center"><span class="text-sm line-through me-2 text-gray-500">Rs. {{ $tour->price }}</span><span class="text-green-500 font-semibold">Rs. {{ $tour->discounted_price }}</span></div>
                 </div>
                 <div class="mt-4">
                     <h4 class="font-medium mb-3">Enquire about this Package:</h4>
-                    <form>
-                        <div class="mb-4"><label for="name" class="block text-sm font-medium text-gray-700 mb-1">Name</label><input type="text" id="name" placeholder="Enter your name" name="name" class="w-full px-4 py-2 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-yellow-500 border-gray-300"></div>
+                    <form method="POST" action="{{ route('inquiryform.store') }}">
+                        <input type="hidden" name="tour_name" value="{{ $tour->title }} ">
+                        <input type="hidden" name="tour_slug" value="{{ $tour->slug }} ">
+                    @csrf
+                    @method('POST')
+                        <div class="mb-4"><label for="name"  class="block text-sm font-medium text-gray-700 mb-1">Name</label><input type="text" id="name" placeholder="Enter your name" name="name" class="w-full px-4 py-2 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-yellow-500 border-gray-300"></div>
                         <div class="mb-4"><label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email</label><input type="email" id="email" placeholder="Enter your email" name="email" class="w-full px-4 py-2 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-yellow-500 border-gray-300"></div>
-                        <div class="mb-4"><label for="phone" class="block text-sm font-medium text-gray-700 mb-1">Phone</label><input type="tel" id="phone" placeholder="Enter your phone number" name="phone" class="w-full px-4 py-2 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-yellow-500 border-gray-300"></div>
+                        <div class="mb-4"><label for="phone"  class="block text-sm font-medium text-gray-700 mb-1">Phone</label><input type="tel" id="phone" placeholder="Enter your phone number" name="phone" class="w-full px-4 py-2 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-yellow-500 border-gray-300"></div>
                         <div class="mb-4">
                             <label for="travelDate" class="block text-sm font-medium text-gray-700 mb-1">Choose Date of Travel</label>
                             <div class="react-datepicker-wrapper w-full mt-1">
-                                <div class="react-datepicker__input-container"><input type="text" name="travelDate" placeholder="Choose Date of Travel" class="w-full px-4 py-2 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-yellow-500 border-gray-300" value=""></div>
+                                <input type="date" name="date_of_travel" placeholder="Choose Date of Travel" class="w-full px-4 py-2 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-yellow-500 border-gray-300" value=""></div>
                             </div>
                         </div>
-                        <div class="mb-4"><label for="numPeople" class="block text-sm font-medium text-gray-700 mb-1">Number of People</label><input type="number" id="numPeople" placeholder="Enter number of people" name="numPeople" class="w-full px-4 py-2 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-yellow-500 border-gray-300"></div>
-                        <div class="mb-4"><label for="remarks" class="block text-sm font-medium text-gray-700 mb-1">Remarks</label><textarea name="remarks" placeholder="Enter any remarks" class="w-full px-4 py-2 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 border-gray-300 "></textarea></div>
-                        <div class="col-md-12 mt-3">
-                            <div>
-                                <div>
-                                    <div class="grecaptcha-badge" data-style="bottomleft" style="width: 256px; height: 60px; display: block; transition: left 0.3s; position: fixed; bottom: 14px; left: -186px; box-shadow: gray 0px 0px 5px; border-radius: 2px; overflow: hidden;">
-                                        <div class="grecaptcha-logo"><iframe title="reCAPTCHA" width="256" height="60" role="presentation" name="a-ew9woicupm08" frameborder="0" scrolling="no" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation allow-modals allow-popups-to-escape-sandbox allow-storage-access-by-user-activation" src="https://www.google.com/recaptcha/api2/anchor?ar=1&amp;k=6LdGzGkqAAAAADCqj4JrKmIP06qylCVG5llKC9pt&amp;co=aHR0cHM6Ly93d3cuZW5qb3lrYXJhZG8uY29tOjQ0Mw..&amp;hl=en&amp;type=image&amp;v=hbAq-YhJxOlTnqb9r_mc_r5R&amp;theme=light&amp;size=invisible&amp;badge=bottomleft&amp;cb=12p8rh6h8ymk"></iframe></div>
-                                        <div class="grecaptcha-error"></div>
-                                        <textarea id="g-recaptcha-response-1" name="g-recaptcha-response" class="g-recaptcha-response" style="width: 250px; height: 40px; border: 1px solid rgb(193, 193, 193); margin: 10px 25px; padding: 0px; resize: none; display: none;"></textarea>
-                                    </div>
-                                    <iframe style="display: none;"></iframe>
-                                </div>
-                            </div>
-                        </div>
+                        <div class="mb-4"><label for="numPeople" names class="block text-sm font-medium text-gray-700 mb-1">Number of People</label><input type="number" id="numPeople" placeholder="Enter number of people" name="number_of_people" class="w-full px-4 py-2 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-yellow-500 border-gray-300"></div>
+                        <div class="mb-4"><label for="remarks" class="block text-sm font-medium text-gray-700 mb-1">Remarks</label>
+                        <textarea name="remarks" placeholder="Enter any remarks" class="w-full px-4 py-2 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 border-gray-300 "></textarea></div>
+                        
                         <button type="submit" class="bg-yellow-400 rounded-xl px-6 relative mt-6 w-full py-3 font-medium">Enquire</button>
                     </form>
                 </div>

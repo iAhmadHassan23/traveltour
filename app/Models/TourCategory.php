@@ -10,7 +10,7 @@ class TourCategory extends Model
     use HasFactory;
     protected $guarded = ['id'];
 
-    public function tour() {
-        return $this->hasMany(Tour::class);
+    public function tours() {
+        return $this->belongsToMany(Tour::class, 'tour_category_tour', 'tour_category_id', 'tour_id');
     }
 }

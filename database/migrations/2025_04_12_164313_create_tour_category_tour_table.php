@@ -13,14 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('itenaries', function (Blueprint $table) {
+        Schema::create('tour_category_tour', function (Blueprint $table) {
             $table->id();
-            $table->string('day_number');
-            $table->string('title');
-            $table->longText('short_description');
-            $table->unsignedBigInteger('tour_id');
-            $table->foreign('tour_id')->references('id')->on('tours')
-                ->onDelete('cascade');
+            $table->foreignId('tour_id')->constrained()->onDelete('cascade');
+            $table->foreignId('tour_category_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -32,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('itenaries');
+        Schema::dropIfExists('tour_category_tour');
     }
 };
