@@ -264,7 +264,7 @@ $action = route('tour.store');
                             <div class="row">
                                 <div class="col-sm-12">
                                     <div class="form-group">
-                                        <label>Inclusives</label>
+                                        <label>Inclusions</label>
                                         <textarea name="inclusives" id="inclusives" class="form-control"
                                             cols="30" rows="6"
                                             placeholder="Enter Inclusives">{{ $row->inclusives ?? old('inclusives')}}</textarea>
@@ -277,7 +277,7 @@ $action = route('tour.store');
 
                                 <div class="col-sm-12">
                                     <div class="form-group">
-                                        <label>Exclusives</label>
+                                        <label>Exclusions</label>
                                         <textarea name="exclusives" id="exclusives" class="form-control"
                                             cols="30" rows="6"
                                             placeholder="Enter Exclusives">{{ $row->exclusives ?? old('exclusives')}}</textarea>
