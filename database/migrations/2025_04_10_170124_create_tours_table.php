@@ -30,6 +30,11 @@ return new class extends Migration
             $table->longText('other_info')->nullable();
             $table->tinyInteger('status')->default(1);
             $table->tinyInteger('index_status')->default(1);
+            $table->tinyInteger('transportation')->default(0)->nullable();
+            $table->tinyInteger('meals')->default(0)->nullable();
+            $table->tinyInteger('stay_included')->default(0)->nullable();
+            $table->tinyInteger('sight_seeing')->default(0)->nullable();
+            $table->tinyInteger('assistance')->default(0)->nullable();
             $table->string('meta_image', 150)->nullable();
             $table->string('meta_title', 150)->nullable();
             $table->string('meta_description', 150)->nullable();

@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('itenary_exclusives', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('iternary_id');
-            $table->foreign('iternary_id')->references('id')->on('itenaries')
+            $table->unsignedBigInteger('itenary_id');
+            $table->foreign('itenary_id')->references('id')->on('itenaries')
                 ->onDelete('cascade');
             $table->string('title')->nullable();
             $table->string('heading')->nullable();

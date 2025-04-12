@@ -48,7 +48,7 @@ class TourController extends Controller
     {
         $validated = $request->validate([
             'title'        => ['required', 'string', 'max:255'],
-            'slug'         => ['required', 'alpha_dash', 'unique:blogs'],
+            'slug'         => ['required', 'alpha_dash', 'unique:tours'],
             'tour_category_id'  => ['required'],
             'price' => ['required'],
             'discounted_price' => ['nullable'],
@@ -63,6 +63,11 @@ class TourController extends Controller
             //                                            'video_url'        => ['required', 'url'],
             'index_status' => ['required'],
             'status'       => ['required'],
+            'transportation' => ['nullable'],
+            'meals' => ['nullable'],
+            'stay_included' => ['nullable'],
+            'sight_seeing' => ['nullable'],
+            'assistance' => ['nullable']
         ], [
             'tour_category_id.required' => 'The category field is required',
             //                                            'video_url.required'   => 'The video url field is required',
@@ -128,9 +133,20 @@ class TourController extends Controller
             'other_info' => ['nullable'],
             'index_status' => ['required'],
             'status'       => ['required'],
+            'transportation' => ['nullable'],
+            'meals' => ['nullable'],
+            'stay_included' => ['nullable'],
+            'sight_seeing' => ['nullable'],
+            'assistance' => ['nullable']
         ], [
             'tour_category_id.required' => 'The tour category field is required',
         ]);
+
+        $checkboxFields = ['transportation', 'meals', 'stay_included', 'sight_seeing', 'assistance'];
+        foreach ($checkboxFields as $field) {
+            $request[$field] = $request->has($field) ? 1 : 0;
+        }
+
         $data      = $request->except('_token', '_method', 'files', 'gallery');
         DB::beginTransaction();
 

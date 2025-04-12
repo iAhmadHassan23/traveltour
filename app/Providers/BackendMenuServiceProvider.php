@@ -67,6 +67,14 @@ class BackendMenuServiceProvider extends ServiceProvider
             ]);
 
             $event->menu->add([
+                'text' => 'Tour Itenaries',
+                'url'  => route('itenaries.index'),
+                'icon' => 'fas fa-fw fa-list',
+                'can'  => 'itenary list'
+
+            ]);
+
+            $event->menu->add([
                 'text' => 'Pages',
                 'url'  => route('page.index'),
                 'icon' => 'fas fa-fw fa-file',
@@ -154,32 +162,31 @@ class BackendMenuServiceProvider extends ServiceProvider
                 ]
             ]);
 
- $event->menu->add([
+            $event->menu->add([
                 'text' => 'Backups',
                 'url'  => route('backups.index'),
-                'icon' => 'fas fa-fw fa-list', 
+                'icon' => 'fas fa-fw fa-list',
             ]);
-//            $event->menu->add([
-//                'text' => 'Pages',
-//                'url'  => route('page.index'),
-//                'icon' => 'fas fa-fw fa-file'
-//            ]);
-//            $event->menu->add([
-//                'text' => 'Tools Pages',
-//                'url'  => route('tools-page.index'),
-//                'icon' => 'fas fa-fw fa-wrench'
-//            ]);
-//            $event->menu->add([
-//                'text' => 'Tools',
-//                'url'  => route('tools.index'),
-//                'icon' => 'fas fa-fw fa-tools'
-//            ]);
-//            $event->menu->add([
-//                'text' => 'Sub Tools',
-//                'url'  => route('sub.tools.index'),
-//                'icon' => 'fas fa-fw fa-tools'
-//            ]);
+            //            $event->menu->add([
+            //                'text' => 'Pages',
+            //                'url'  => route('page.index'),
+            //                'icon' => 'fas fa-fw fa-file'
+            //            ]);
+            //            $event->menu->add([
+            //                'text' => 'Tools Pages',
+            //                'url'  => route('tools-page.index'),
+            //                'icon' => 'fas fa-fw fa-wrench'
+            //            ]);
+            //            $event->menu->add([
+            //                'text' => 'Tools',
+            //                'url'  => route('tools.index'),
+            //                'icon' => 'fas fa-fw fa-tools'
+            //            ]);
+            //            $event->menu->add([
+            //                'text' => 'Sub Tools',
+            //                'url'  => route('sub.tools.index'),
+            //                'icon' => 'fas fa-fw fa-tools'
+            //            ]);
         });
-
     }
 }

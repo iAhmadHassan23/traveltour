@@ -20,6 +20,11 @@ class Tour extends Model
         return $this->belongsTo(TourCategory::class);
     }
 
+    public function itenaries(): HasMany
+    {
+        return $this->hasMany(Itenary::class);
+    }
+
     public function scopePublished($query)
     {
         return $query->where('status', 1)->where(function ($q) {
