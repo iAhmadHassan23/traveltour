@@ -1,13 +1,14 @@
 <a href="{{route('tour.details', [$tour->slug]) }}"
     data-discover="true">
     <div class="relative">
+        
         @php
         if($tour->media){
         $media = json_decode($tour->media);
         }
         @endphp
-        @if($media && isset($media->full_image))
-        <img src="{{ asset('media/' . $media->full_image) }}" alt="Bali Honeymoon 7 Days 6 Nights Tour Package"
+        @if($media && isset($media->full_image[0]))
+        <img src="{{ asset('media/' . $media->full_image[0]) }}" alt="Bali Honeymoon 7 Days 6 Nights Tour Package"
             class="w-full aspect-[6/7] object-cover rounded-3xl mb-2">
         @endif
         <div class="absolute top-3 left-3 lg:top-2 lg:left-2 text-base lg:text-xs z-10 backdrop-blur">

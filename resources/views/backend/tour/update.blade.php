@@ -454,25 +454,45 @@ $action = route('tour.store');
                             </div>
                         </div>
 
-                        <div class="row">
-                            <div class="col-sm-12 image_section">
+                        <div class="row" id="gallery-container">
+                            @if(!empty($gallery))
+                            @foreach($gallery as $index => $image)
+                            <div class="col-sm-12 image_section mb-3">
                                 <label for="about_section_image">Image</label>
                                 <div class="input-group-prepend">
                                     <button type="button" class="btn btn-primary text-nowrap gallery_model_btn"
-                                        data-id="0" data-toggle="modal" data-target=".gallery_images">Choose
-                                        image
+                                        data-id="{{ $index }}" data-toggle="modal" data-target=".gallery_images">Choose image
                                     </button>
-                                    <input type="text" name="gallery[image_alt]" class="form-control"
-                                        placeholder="Image alt" value="{{ isset($image) ? $image['image_alt'] : '' }}">
-                                    <input type="hidden" name="gallery[full_image]"
-                                        class="form-control full_image" value="{{ isset($image['full_image']) ? $image['full_image'] : null }}">
+                                    <input type="text" name="gallery[image_alt][]" class="form-control"
+                                        placeholder="Image alt" value="{{ $image['image_alt'] ?? '' }}">
+                                    <input type="hidden" name="gallery[full_image][]" class="form-control full_image"
+                                        value="{{ $image['full_image'] ?? '' }}">
                                 </div>
-                                <div class="image-preview">
-                                    @isset($image)
-                                    <img src="{{ '/media/'.$image['full_image'] }}" width="150" class="img-thumbnail" alt="">
-                                    @endisset
+                                <div class="image-preview mt-2">
+                                    @if(!empty($image['full_image']))
+                                    <img src="{{ '/media/' . $image['full_image'] }}" width="150" class="img-thumbnail" alt="">
+                                    @endif
                                 </div>
                             </div>
+                            @endforeach
+                            @else
+                            <div class="col-sm-12 image_section mb-3">
+                                <label for="about_section_image">Image</label>
+                                <div class="input-group-prepend">
+                                    <button type="button" class="btn btn-primary text-nowrap gallery_model_btn"
+                                        data-id="0" data-toggle="modal" data-target=".gallery_images">Choose image
+                                    </button>
+                                    <input type="text" name="gallery[image_alt][]" class="form-control"
+                                        placeholder="Image alt">
+                                    <input type="hidden" name="gallery[full_image][]" class="form-control full_image">
+                                </div>
+                                <div class="image-preview mt-2"></div>
+                            </div>
+                            @endif
+                        </div>
+
+                        <div class="text-end">
+                            <button type="button" class="btn btn-success mt-2" onclick="addGalleryImage()">Add More</button>
                         </div>
 
                         <button type="sumbit" class="btn btn-primary btn-user btn-block mt-4">
@@ -521,6 +541,29 @@ $action = route('tour.store');
     function removeHighlight(button) {
         button.parentElement.remove();
     }
+</script>
+
+<script>
+function addGalleryImage() {
+    let index = document.querySelectorAll('#gallery-container .image_section').length;
+
+    let html = `
+        <div class="col-sm-12 image_section mb-3">
+            <label for="about_section_image">Image</label>
+            <div class="input-group-prepend">
+                <button type="button" class="btn btn-primary text-nowrap gallery_model_btn"
+                    data-id="${index}" data-toggle="modal" data-target=".gallery_images">Choose image
+                </button>
+                <input type="text" name="gallery[image_alt][]" class="form-control"
+                    placeholder="Image alt">
+                <input type="hidden" name="gallery[full_image][]" class="form-control full_image">
+            </div>
+            <div class="image-preview mt-2"></div>
+        </div>
+    `;
+
+    document.getElementById('gallery-container').insertAdjacentHTML('beforeend', html);
+}
 </script>
 
 @endsection

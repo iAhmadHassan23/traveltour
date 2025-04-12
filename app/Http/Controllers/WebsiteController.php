@@ -99,6 +99,7 @@ class WebsiteController extends Controller
         $adventure_tours = Tour::whereHas('tour_categories', function ($query) {
             $query->where('title', 'Adventure Trips');
         })->get();
+
         return view('home', compact(
             'honeymoon_tours',
             'international_tours',

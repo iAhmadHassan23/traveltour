@@ -17,15 +17,26 @@
         </nav>
     </div>
     <div class="hidden md:grid grid-cols-2 -m-1">
-        @if($media && isset($media->full_image))
-        <div class="h-96 m-1 bg-gray-200 rounded-2xl" style="background-image: url('{{ asset('media/' . $media->full_image) }}'); background-size: cover; background-position: center center;"></div>
+        @if($media && isset($media->full_image[0]))
+        <div class="h-96 m-1 bg-gray-200 rounded-2xl" style="background-image: url('{{ asset('media/' . $media->full_image[0]) }}'); background-size: cover; background-position: center center;"></div>
         @endif
+        @if($media && isset($media->full_image))
         <div class="grid grid-cols-2">
-            <div class="bg-gray-200 rounded-2xl m-1" style="background-image: url(&quot;https://cdn.enjoykarado.com/packages/661b97d96401d.webp&quot;); background-size: cover; background-position: center center;"></div>
-            <div class="bg-gray-200 rounded-2xl m-1" style="background-image: url(&quot;https://cdn.enjoykarado.com/packages/661b97d95f6e5.webp&quot;); background-size: cover; background-position: center center;"></div>
-            <div class="bg-gray-200 rounded-2xl m-1" style="background-image: url(&quot;https://cdn.enjoykarado.com/packages/661b97d96224e.webp&quot;); background-size: cover; background-position: center center;"></div>
-            <div class="bg-gray-200 rounded-2xl m-1" style="background-image: url(&quot;https://cdn.enjoykarado.com/packages/661b97d95a754.webp&quot;); background-size: cover; background-position: center center;"></div>
+        @if($media && isset($media->full_image[1]))
+            <div class="bg-gray-200 rounded-2xl m-1" style="background-image: url('{{ asset('media/' . $media->full_image[1]) }}'); background-size: cover; background-position: center center;"></div>
+        @endif
+        @if($media && isset($media->full_image[2]))
+            <div class="bg-gray-200 rounded-2xl m-1" style="background-image: url('{{ asset('media/' . $media->full_image[2]) }}'); background-size: cover; background-position: center center;"></div>
+        @endif
+        @if($media && isset($media->full_image[3]))
+            <div class="bg-gray-200 rounded-2xl m-1" style="background-image: url('{{ asset('media/' . $media->full_image[3]) }}'); background-size: cover; background-position: center center;"></div>
+        @endif
+        @if($media && isset($media->full_image[4]))
+            <div class="bg-gray-200 rounded-2xl m-1" style="background-image: url('{{ asset('media/' . $media->full_image[4]) }}'); background-size: cover; background-position: center center;"></div>
+        @endif
+            
         </div>
+        @endif
     </div>
     <div class="block md:hidden relative">
         <div class="absolute left-2 z-30 h-full flex items-center md:px-4">
