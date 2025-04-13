@@ -10,12 +10,11 @@ use App\Models\Itenary;
 use App\Models\Tour;
 use Mail;
 
-class WebsiteController extends Controller
-{
+class WebsiteController extends Controller {
     public function index($page = 'home')
     {
 
-        $pageData  = self::pageData($page, 'page');
+        $pageData = self::pageData($page, 'page');
         return view('index', compact('pageData'));
     }
 

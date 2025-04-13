@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [WebsiteController::class, 'home']);
 
-Route::get('/{slug}', [WebsiteController::class, 'tour_details'])->name('tour.details');
+Route::get('/tour/{slug}', [WebsiteController::class, 'tour_details'])->name('tour.details');
 
 Route::post('/inquiry-form/store', [FormController::class, 'enquiry_form'])->name('inquiryform.store');
 
