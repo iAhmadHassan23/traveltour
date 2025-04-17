@@ -4,7 +4,6 @@
 @endsection
 @section('ogimage', 'https://ozcleaningperth.com.au/assets/images/home-banner.jpg')
 @section('mainContent')
-
 <div class="container mx-auto max-w-screen-xl px-2">
     <div class="main-slider w-full aspect-[1] sm:aspect-auto mt-4 mb-2">
         <div class="relative">
@@ -30,17 +29,25 @@
             </div>
             <div class="swiper swiper1 swiper-initialized swiper-horizontal rounded-3xl swiper-backface-hidden">
                 <div class="swiper-wrapper" style="transition-duration: 0ms; transform: translate3d(-8918px, 0px, 0px); transition-delay: 0ms;">
+                    @foreach($sliders as $slider)
+                    @php
+                    if($slider->media){
+                    $media = json_decode($slider->media);
+                    }
+                    @endphp
                     <div class="swiper-slide swiper-slide-next" style="width: 1264px; margin-right: 10px;"
                         data-swiper-slide-index="0">
                         <a class="block" href="https://www.enjoykarado.com/adventure-trips/sikkim-symphony-8-day-himalayan-expedition">
                             <picture>
-                                <source srcset="https://cdn.enjoykarado.com/slider/67b4c2949177d.jpeg"
+                                <source srcset="https://cdn.enjoykarado.com/slider/67b2041d99f03.PNG"
                                     media="(max-width: 640px)">
-                                <img src="https://cdn.enjoykarado.com/slider/67b4c293966d5.webp" alt="Slide 40"
+                                <img src="{{ asset('media/' . $media->full_image[0]) }}" alt="Slide 40"
                                     class="w-full h-auto rounded-3xl transition-opacity duration-200 shadow ease-in-out opacity-100">
                             </picture>
                         </a>
                     </div>
+                    @endforeach
+                    
                     <div class="swiper-slide" style="width: 1264px; margin-right: 10px;" data-swiper-slide-index="1">
                         <a class="block" href="https://www.enjoykarado.com/family-trips/kashmir-winter-tour-package-6-days-5-nights">
                             <picture>
@@ -135,6 +142,7 @@
             </div>
         </div>
     </div>
+    
     <div class="block sm:hidden" id="categories">
         <div class="mt-2 mb-6 transition duration-150 sticky top-0 z-20 bg-white/90 backdrop-blur backdrop-contrast-200">
             <div class="swiper1 swiper1-initialized swiper1-horizontal swiper1-backface-hidden">
@@ -214,6 +222,7 @@
 
         </div>
     </div>
+    @if($best_offers)
     <div class="my-16">
         <div class="mb-4 text-center">
             <h2 class="text-2xl font-bold underline underline-offset-4 decoration-yellow-400 decoration-2">
@@ -221,6 +230,7 @@
             </h2>
         </div>
         <div class="flex flex-wrap gap-4 gap-y-8 my-6 justify-center">
+            @foreach($best_offers as $tour)
             <div class="md:w-[calc(50%-1rem)] lg:w-[calc(25%-1rem)] w-full">
                 <a href="/family-trips/kerala-adventure-munnar-thekkady-vagamon-tour/"
                     data-discover="true">
@@ -245,7 +255,7 @@
                                 <path d="M256 23c-3.7 0-7.4.1-11.1.27l.8 17.98c3.4-.16 6.8-.25 10.3-.25 118.8 0 215 96.2 215 215s-96.2 215-215 215c-89.6 0-166.35-54.7-198.65-132.6l27.63-8.3-48.43-34.3-19.05 54.5 22.55-6.7C74.68 428.8 158.4 489 256 489c128.6 0 233-104.4 233-233S384.6 23 256 23zm-30.8 2.04c-13.3 1.75-26.1 4.6-38.6 8.48l5.6 17.09c11.4-3.54 23.3-6.15 35.4-7.75l-2.4-17.82zm-57 15.12c-12.4 5.05-24.2 11.12-35.4 18.12l9.5 15.21c10.3-6.44 21.2-12.03 32.6-16.67l-6.7-16.66zM116.4 69.5a234.139 234.139 0 0 0-29.35 26.12l13.05 12.28c8.3-8.77 17.4-16.81 27-24.06l-4.8-6.57-5.9-7.77zm69.5 8.58l-4.4 17.44 217 55.48 4.4-17.4-217-55.52zM74.07 110.5c-8.19 10.2-15.54 21.2-21.94 32.7l15.65 8.8c5.91-10.7 12.69-20.8 20.26-30.3l-13.97-11.2zm127.63 8.8c-3.9 26 2.8 55.2 14.2 79.2 6.4 13.4 14.2 25.2 21.9 33.8 4.2 4.7 8.4 8.3 12.2 10.9l-5.4 21.2c-4.6.4-10 1.6-16 3.7-10.9 3.8-23.4 10.4-35.4 19.1-21.6 15.6-41.4 37.9-50.4 62.6l167.5 42.9c3.9-26-2.8-55.2-14.2-79.2-6.4-13.4-14.2-25.2-21.9-33.8-4.2-4.7-8.4-8.3-12.2-10.9l5.4-21.2c4.5-.5 10-1.6 16-3.7 10.9-3.8 23.4-10.4 35.4-19.1 21.6-15.6 41.4-37.9 50.4-62.6l-167.5-42.9zM43.24 160.9c-5.33 12-9.7 24.4-13 37.3l17.48 4.2c3.03-11.8 7.04-23.2 11.95-34.2l-16.43-7.3zM26.2 217.5C24.11 230 23 242.9 23 256v.9l18-.2v-.7c0-12.1 1.02-24 2.95-35.6l-17.75-2.9zM113.5 361l-4.4 17.4 217 55.5 4.4-17.4-217-55.5z">
                                 </path>
                             </svg>
-                            5 Days / 4 Nights
+                            {{ $tour->number_of_days ?? ''}} Days / {{ $tour->number_of_nights ?? ''}} Nights
                         </div>
                         <div class="flex gap-1 place-items-center absolute top-3 right-3 lg:top-2 lg:right-2 text-white font-bold z-10 bg-green-500 px-3 py-1 rounded-3xl text-lg lg:text-sm">
                             <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24"
@@ -258,13 +268,13 @@
                     </div>
                     <div class="text-sm font-medium mt-3 text-gray-500">
                         <span>
-                            Kerala
+                            {{ $tour->city ?? ''}}
                         </span>
-                        - India
+                        - {{ $tour->country ?? ''}}
                     </div>
                     <div class="flex place-items-center mt-1 overflow-hidden h-14">
                         <h2 class="text-lg font-medium line-clamp-2">
-                            Kerala Adventure: Munnar, Thekkady &amp; Vagamon Tour
+                            {{ $tour->title ?? ''}}
                         </h2>
                     </div>
                     <div class="flex place-items-center text-sm font-medium mt-1 text-gray-500">
@@ -277,10 +287,10 @@
                     </div>
                     <div class="mt-2">
                         <s class="me-2 text-gray-500">
-                            Rs. 20,250
+                            Rs. {{ $tour->price ?? ''}}
                         </s>
                         <span class="text-green-500 font-semibold">
-                            Rs. 18,250
+                            Rs. {{ $tour->discounted_price ?? ''}}
                         </span>
                     </div>
                 </a>
@@ -312,7 +322,9 @@
                     </div>
                 </div>
             </div>
-            <div class="md:w-[calc(50%-1rem)] lg:w-[calc(25%-1rem)] w-full">
+
+            @endforeach
+            <!-- <div class="md:w-[calc(50%-1rem)] lg:w-[calc(25%-1rem)] w-full">
                 <a href="/adventure-trips/bali-island-honeymoon-7-days-package/" data-discover="true">
                     <div class="relative">
                         <img src="https://cdn.enjoykarado.com/packages/659f7fc2c31f7.webp" alt="Bali Island Honeymoon 7 Days Package"
@@ -491,9 +503,11 @@
                         </a>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
+    @endif
+    @if($trending)
     <div class="my-16">
         <div class="mb-4 text-center">
             <h2 class="text-2xl font-bold underline underline-offset-4 decoration-yellow-400 decoration-2">
@@ -501,6 +515,7 @@
             </h2>
         </div>
         <div class="flex flex-wrap gap-4 gap-y-8 my-6 justify-center">
+            @foreach($trending as $tour)
             <div class="md:w-[calc(50%-1rem)] lg:w-[calc(25%-1rem)] w-full">
                 <a href="/family-trips/northeast-nirvana/" data-discover="true">
                     <div class="relative">
@@ -524,7 +539,7 @@
                                 <path d="M256 23c-3.7 0-7.4.1-11.1.27l.8 17.98c3.4-.16 6.8-.25 10.3-.25 118.8 0 215 96.2 215 215s-96.2 215-215 215c-89.6 0-166.35-54.7-198.65-132.6l27.63-8.3-48.43-34.3-19.05 54.5 22.55-6.7C74.68 428.8 158.4 489 256 489c128.6 0 233-104.4 233-233S384.6 23 256 23zm-30.8 2.04c-13.3 1.75-26.1 4.6-38.6 8.48l5.6 17.09c11.4-3.54 23.3-6.15 35.4-7.75l-2.4-17.82zm-57 15.12c-12.4 5.05-24.2 11.12-35.4 18.12l9.5 15.21c10.3-6.44 21.2-12.03 32.6-16.67l-6.7-16.66zM116.4 69.5a234.139 234.139 0 0 0-29.35 26.12l13.05 12.28c8.3-8.77 17.4-16.81 27-24.06l-4.8-6.57-5.9-7.77zm69.5 8.58l-4.4 17.44 217 55.48 4.4-17.4-217-55.52zM74.07 110.5c-8.19 10.2-15.54 21.2-21.94 32.7l15.65 8.8c5.91-10.7 12.69-20.8 20.26-30.3l-13.97-11.2zm127.63 8.8c-3.9 26 2.8 55.2 14.2 79.2 6.4 13.4 14.2 25.2 21.9 33.8 4.2 4.7 8.4 8.3 12.2 10.9l-5.4 21.2c-4.6.4-10 1.6-16 3.7-10.9 3.8-23.4 10.4-35.4 19.1-21.6 15.6-41.4 37.9-50.4 62.6l167.5 42.9c3.9-26-2.8-55.2-14.2-79.2-6.4-13.4-14.2-25.2-21.9-33.8-4.2-4.7-8.4-8.3-12.2-10.9l5.4-21.2c4.5-.5 10-1.6 16-3.7 10.9-3.8 23.4-10.4 35.4-19.1 21.6-15.6 41.4-37.9 50.4-62.6l-167.5-42.9zM43.24 160.9c-5.33 12-9.7 24.4-13 37.3l17.48 4.2c3.03-11.8 7.04-23.2 11.95-34.2l-16.43-7.3zM26.2 217.5C24.11 230 23 242.9 23 256v.9l18-.2v-.7c0-12.1 1.02-24 2.95-35.6l-17.75-2.9zM113.5 361l-4.4 17.4 217 55.5 4.4-17.4-217-55.5z">
                                 </path>
                             </svg>
-                            6 Days / 5 Nights
+                            {{ $tour->number_of_days ?? ''}} Days / {{ $tour->number_of_nights ?? ''}} Nights
                         </div>
                         <div class="flex gap-1 place-items-center absolute top-3 right-3 lg:top-2 lg:right-2 text-white font-bold z-10 bg-green-500 px-3 py-1 rounded-3xl text-lg lg:text-sm">
                             <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24"
@@ -537,13 +552,13 @@
                     </div>
                     <div class="text-sm font-medium mt-3 text-gray-500">
                         <span>
-                            Meghalaya
+                            {{ $tour->city ?? ''}}
                         </span>
-                        - India
+                        - {{ $tour->country ?? ''}}
                     </div>
                     <div class="flex place-items-center mt-1 overflow-hidden h-14">
                         <h2 class="text-lg font-medium line-clamp-2">
-                            Northeast Nirvana
+                            {{ $tour->title ?? ''}}
                         </h2>
                     </div>
                     <div class="flex place-items-center text-sm font-medium mt-1 text-gray-500">
@@ -556,10 +571,10 @@
                     </div>
                     <div class="mt-2">
                         <s class="me-2 text-gray-500">
-                            Rs. 35,000
+                            Rs. {{ $tour->price ?? ''}}
                         </s>
                         <span class="text-green-500 font-semibold">
-                            Rs. 23,000
+                            Rs. {{ $tour->discounted_price ?? ''}}
                         </span>
                     </div>
                 </a>
@@ -591,7 +606,8 @@
                     </div>
                 </div>
             </div>
-            <div class="md:w-[calc(50%-1rem)] lg:w-[calc(25%-1rem)] w-full">
+            @endforeach
+            <!-- <div class="md:w-[calc(50%-1rem)] lg:w-[calc(25%-1rem)] w-full">
                 <a href="/family-trips/7-days-6-nights-of-northeast-adventure-book-with-enjoy-karado/"
                     data-discover="true">
                     <div class="relative">
@@ -775,10 +791,12 @@
                         </a>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
+    @endif
 </div>
+
 <div class="my-16 bg-yellow-50 py-16">
     <div class="container mx-auto max-w-screen-xl px-2">
         <img src="https://traventureclub.com/wp-content/uploads/2025/03/Header-Logo-1024x233.png" width="180" alt="Enjoy Kara Do Recent Trips Logo"
@@ -812,100 +830,31 @@
                     </svg>
                 </button>
             </div>
+            @if($recent_trips)
+
             <div class="swiper swiper3 swiper-initialized swiper-horizontal">
                 <div class="swiper-wrapper" style="transition-duration: 0ms; transition-delay: 0ms; transform: translate3d(-440px, 0px, 0px);">
+                    @foreach($recent_trips as $trip)
+                    @php
+                    if($trip->media){
+                    $media = json_decode($trip->media);
+                    }
+                    @endphp
                     <div class="swiper-slide  md:w-56" data-swiper-slide-index="8" style="margin-right: 16px;">
-                        <img src="https://cdn.enjoykarado.com/gallery/677930346f25c.webp" alt="Kerala &amp; Under Sea"
+                        <img src="{{ asset('media/' . $media->full_image[0]) }}" alt="Kerala &amp; Under Sea"
                             class=" md:w-56 aspect-[4/6] object-cover rounded-3xl border-r-4 border-b-4 border-yellow-400">
                         <h3 class="mt-2 font-medium text-center">
-                            Kerala &amp; Under Sea
+                            {{ $trip->title ?? ''}}
                         </h3>
                     </div>
-                    <div class="swiper-slide  md:w-56" data-swiper-slide-index="9" style="margin-right: 16px;">
-                        <img src="https://cdn.enjoykarado.com/gallery/6778fb8ae4196.webp" alt="Kerala"
-                            class=" md:w-56 aspect-[4/6] object-cover rounded-3xl border-r-4 border-b-4 border-yellow-400">
-                        <h3 class="mt-2 font-medium text-center">
-                            Kerala
-                        </h3>
-                    </div>
-                    <div class="swiper-slide  md:w-56" data-swiper-slide-index="10" style="margin-right: 16px;">
-                        <img src="https://cdn.enjoykarado.com/gallery/6778fdee0404f.webp" alt="Andaman"
-                            class=" md:w-56 aspect-[4/6] object-cover rounded-3xl border-r-4 border-b-4 border-yellow-400">
-                        <h3 class="mt-2 font-medium text-center">
-                            Andaman
-                        </h3>
-                    </div>
-                    <div class="swiper-slide swiper-slide-prev  md:w-56" data-swiper-slide-index="11"
-                        style="margin-right: 16px;">
-                        <img src="https://cdn.enjoykarado.com/gallery/6778fc85e0ded.webp" alt="Jibhi"
-                            class=" md:w-56 aspect-[4/6] object-cover rounded-3xl border-r-4 border-b-4 border-yellow-400">
-                        <h3 class="mt-2 font-medium text-center">
-                            Jibhi
-                        </h3>
-                    </div>
-                    <div class="swiper-slide swiper-slide-active  md:w-56" data-swiper-slide-index="0"
-                        style="margin-right: 16px;">
-                        <img src="https://cdn.enjoykarado.com/gallery/67790123c5d2f.webp" alt="Manali"
-                            class=" md:w-56 aspect-[4/6] object-cover rounded-3xl border-r-4 border-b-4 border-yellow-400">
-                        <h3 class="mt-2 font-medium text-center">
-                            Manali
-                        </h3>
-                    </div>
-                    <div class="swiper-slide swiper-slide-next  md:w-56" data-swiper-slide-index="1"
-                        style="margin-right: 16px;">
-                        <img src="https://cdn.enjoykarado.com/gallery/67792f9d86efe.webp" alt="Bali &amp; Ladakh"
-                            class=" md:w-56 aspect-[4/6] object-cover rounded-3xl border-r-4 border-b-4 border-yellow-400">
-                        <h3 class="mt-2 font-medium text-center">
-                            Bali &amp; Ladakh
-                        </h3>
-                    </div>
-                    <div class="swiper-slide  md:w-56" data-swiper-slide-index="2" style="margin-right: 16px;">
-                        <img src="https://cdn.enjoykarado.com/gallery/6778fe54d14b8.webp" alt="Himachal"
-                            class=" md:w-56 aspect-[4/6] object-cover rounded-3xl border-r-4 border-b-4 border-yellow-400">
-                        <h3 class="mt-2 font-medium text-center">
-                            Himachal
-                        </h3>
-                    </div>
-                    <div class="swiper-slide  md:w-56" data-swiper-slide-index="3" style="margin-right: 16px;">
-                        <img src="https://cdn.enjoykarado.com/gallery/677900e8a3653.webp" alt="Dharamshala"
-                            class=" md:w-56 aspect-[4/6] object-cover rounded-3xl border-r-4 border-b-4 border-yellow-400">
-                        <h3 class="mt-2 font-medium text-center">
-                            Dharamshala
-                        </h3>
-                    </div>
-                    <div class="swiper-slide  md:w-56" data-swiper-slide-index="4" style="margin-right: 16px;">
-                        <img src="https://cdn.enjoykarado.com/gallery/6778fcf54e984.webp" alt="Darjeeling"
-                            class=" md:w-56 aspect-[4/6] object-cover rounded-3xl border-r-4 border-b-4 border-yellow-400">
-                        <h3 class="mt-2 font-medium text-center">
-                            Darjeeling
-                        </h3>
-                    </div>
-                    <div class="swiper-slide  md:w-56" data-swiper-slide-index="5" style="margin-right: 16px;">
-                        <img src="https://cdn.enjoykarado.com/gallery/6778ffe204f24.webp" alt="Kashmir"
-                            class=" md:w-56 aspect-[4/6] object-cover rounded-3xl border-r-4 border-b-4 border-yellow-400">
-                        <h3 class="mt-2 font-medium text-center">
-                            Kashmir
-                        </h3>
-                    </div>
-                    <div class="swiper-slide  md:w-56" data-swiper-slide-index="6" style="margin-right: 16px;">
-                        <img src="https://cdn.enjoykarado.com/gallery/6778fb18b3ef1.webp" alt="Ladakh"
-                            class=" md:w-56 aspect-[4/6] object-cover rounded-3xl border-r-4 border-b-4 border-yellow-400">
-                        <h3 class="mt-2 font-medium text-center">
-                            Ladakh
-                        </h3>
-                    </div>
-                    <div class="swiper-slide  md:w-56" data-swiper-slide-index="7" style="margin-right: 16px;">
-                        <img src="https://cdn.enjoykarado.com/gallery/67793064edbf9.webp" alt="Himachal &amp; Kashmir"
-                            class=" md:w-56 aspect-[4/6] object-cover rounded-3xl border-r-4 border-b-4 border-yellow-400">
-                        <h3 class="mt-2 font-medium text-center">
-                            Himachal &amp; Kashmir
-                        </h3>
-                    </div>
+                    @endforeach
                 </div>
             </div>
+            @endif
         </div>
     </div>
 </div>
+@if($reviews)
 <div class="container mx-auto max-w-screen-xl px-2 mb-8">
     <div class="">
         <h2 class="text-2xl font-bold text-center underline underline-offset-2 decoration-yellow-400">
@@ -939,246 +888,34 @@
                 <div class="swiper-wrapper" style="transition-duration: 0ms; transition-delay: 0ms; transform: translate3d(-453.312px, 0px, 0px);">
                     <div class="swiper-slide w-2/3 md:w-1/3" data-swiper-slide-index="10"
                         style="margin-right: 16px;">
+                        @foreach($reviews as $review)
+                        @php
+                        if($review->media){
+                        $media = json_decode($review->media);
+                        }
+                        @endphp
                         <div class="bg-white border rounded-lg p-4 shadow-md flex flex-col items-center text-center">
                             <div class="w-24 h-24 bg-gray-200 rounded-full flex items-center justify-center mb-4">
                             </div>
                             <h3 class="text-lg font-semibold text-gray-800">
-                                Zeeshan Nadaf
+                                {{ $review->title ?? ''}}
                             </h3>
                             <p class="mt-2 text-yellow-500">
                                 ★★★★★
                             </p>
                             <p class="mt-4 text-gray-600 text-center line-clamp-3">
-                                We recently booked a Jaipur Ranthambore trip with Enjoy Kara Do, and I
-                                couldn't be happier with the experience! From start to finish, the team
-                                ensured a seamless journey. Our guide was incredibly knowledgeable about
-                                the history and culture of both destinations, making the trip both informative
-                                and enjoyable. The accommodations were comfortable, and the itinerary was
-                                well-planned, allowing us to explore each site fully. I highly recommend
-                                Enjoy Kara Do for anyone looking for a hassle-free and unforgettable travel
-                                experience. Thank you for the memories!
+                            {!! preg_replace('/<p><br><\/p>/', '', $review->description ?? '') !!}
                             </p>
                         </div>
+                        @endforeach
                     </div>
-                    <div class="swiper-slide swiper-slide-prev w-2/3 md:w-1/3" data-swiper-slide-index="11"
-                        style="margin-right: 16px;">
-                        <div class="bg-white border rounded-lg p-4 shadow-md flex flex-col items-center text-center">
-                            <div class="w-24 h-24 bg-gray-200 rounded-full flex items-center justify-center mb-4">
-                            </div>
-                            <h3 class="text-lg font-semibold text-gray-800">
-                                Rajeev Mishra
-                            </h3>
-                            <p class="mt-2 text-yellow-500">
-                                ★★★★★
-                            </p>
-                            <p class="mt-4 text-gray-600 text-center line-clamp-3">
-                                Raman ji, It was very pleasant to be part of a guest, enjoying your hospitality
-                                consulting services. You tried well to offer me best what i can expect
-                                from u in my odd health condition and even on tour of hill station.?Pratiyogita
-                                darpan top management.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="swiper-slide swiper-slide-active w-2/3 md:w-1/3" data-swiper-slide-index="0"
-                        style="margin-right: 16px;">
-                        <div class="bg-white border rounded-lg p-4 shadow-md flex flex-col items-center text-center">
-                            <div class="w-24 h-24 bg-gray-200 rounded-full flex items-center justify-center mb-4">
-                            </div>
-                            <h3 class="text-lg font-semibold text-gray-800">
-                                Riya Agarwal
-                            </h3>
-                            <p class="mt-2 text-yellow-500">
-                                ★★★★★
-                            </p>
-                            <p class="mt-4 text-gray-600 text-center line-clamp-3">
-                                Went on my first solo trip with EnjoyKaraDo and I am 100% confident that
-                                this was the best travel experience I have ever had, the safety, the views,
-                                the stay, the easy booking procedure, everything was entireky taken care
-                                of by the team. After coming across this page on instagram, I was fairly
-                                excited to book my trip and they surely stood by what they promised.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="swiper-slide swiper-slide-next w-2/3 md:w-1/3" data-swiper-slide-index="1"
-                        style="margin-right: 16px;">
-                        <div class="bg-white border rounded-lg p-4 shadow-md flex flex-col items-center text-center">
-                            <div class="w-24 h-24 bg-gray-200 rounded-full flex items-center justify-center mb-4">
-                            </div>
-                            <h3 class="text-lg font-semibold text-gray-800">
-                                Nikhil Agarwal
-                            </h3>
-                            <p class="mt-2 text-yellow-500">
-                                ★★★★★
-                            </p>
-                            <p class="mt-4 text-gray-600 text-center line-clamp-3">
-                                I was traveling solo and booked a trip to Meghalaya and Kaziranga with
-                                EKD. The accommodation was good in all the places.The local tour guide
-                                was also very helpful and made sure we cover all the places. Our trip captain
-                                also made sure that all the people in our group are enjoying equally. Looking
-                                forward to many more trips with them.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="swiper-slide w-2/3 md:w-1/3" data-swiper-slide-index="2" style="margin-right: 16px;">
-                        <div class="bg-white border rounded-lg p-4 shadow-md flex flex-col items-center text-center">
-                            <div class="w-24 h-24 bg-gray-200 rounded-full flex items-center justify-center mb-4">
-                            </div>
-                            <h3 class="text-lg font-semibold text-gray-800">
-                                Om Patil
-                            </h3>
-                            <p class="mt-2 text-yellow-500">
-                                ★★★★★
-                            </p>
-                            <p class="mt-4 text-gray-600 text-center line-clamp-3">
-                                My Gujarat-Rajasthan tour with enjoy kara do was fantastic! The well-crafted
-                                itinerary, knowledgeable guides, and seamless logistics made every moment
-                                memorable. From vibrant Gujarat to regal Rajasthan, the journey was a captivating
-                                adventure. Personalized touches and outstanding customer service set enjoy
-                                kara do apart. Highly recommend for an unforgettable experience!
-                            </p>
-                        </div>
-                    </div>
-                    <div class="swiper-slide w-2/3 md:w-1/3" data-swiper-slide-index="3" style="margin-right: 16px;">
-                        <div class="bg-white border rounded-lg p-4 shadow-md flex flex-col items-center text-center">
-                            <div class="w-24 h-24 bg-gray-200 rounded-full flex items-center justify-center mb-4">
-                            </div>
-                            <h3 class="text-lg font-semibold text-gray-800">
-                                Akshay Sameria
-                            </h3>
-                            <p class="mt-2 text-yellow-500">
-                                ★★★★★
-                            </p>
-                            <p class="mt-4 text-gray-600 text-center line-clamp-3">
-                                I've completed my Kashmir trip with my family today. I had a lot of trust
-                                issues when I was thinking to take the package but these guys are completely
-                                trustworthy and they value your time and money. You just tell them where
-                                you want to go and let them manage everything and you just relax like me
-                                ? Everything was awesome, their representative Mr. Raman lakhanpal was
-                                in my touch everytime he asked me every single day that the trip was good
-                                or not how was the behaviour of the hotel staff and the cab he arranged
-                                for me I mean yar kaun puchta h 1 bar paise lene ke baad but he was so
-                                good, kind and humble for me!
-                            </p>
-                        </div>
-                    </div>
-                    <div class="swiper-slide w-2/3 md:w-1/3" data-swiper-slide-index="4" style="margin-right: 16px;">
-                        <div class="bg-white border rounded-lg p-4 shadow-md flex flex-col items-center text-center">
-                            <div class="w-24 h-24 bg-gray-200 rounded-full flex items-center justify-center mb-4">
-                            </div>
-                            <h3 class="text-lg font-semibold text-gray-800">
-                                Kirti Kolay
-                            </h3>
-                            <p class="mt-2 text-yellow-500">
-                                ★★★★★
-                            </p>
-                            <p class="mt-4 text-gray-600 text-center line-clamp-3">
-                                Recently went on a trip planned by Enjoy Kara Do and it is etched in our
-                                memories. The whole experience was extremely stress free as the complete
-                                itinerary was planned out by them. The team of Enjoy Kara Do was extremely
-                                compliant with our requirements and made our trip extremely relaxing.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="swiper-slide w-2/3 md:w-1/3" data-swiper-slide-index="5" style="margin-right: 16px;">
-                        <div class="bg-white border rounded-lg p-4 shadow-md flex flex-col items-center text-center">
-                            <div class="w-24 h-24 bg-gray-200 rounded-full flex items-center justify-center mb-4">
-                            </div>
-                            <h3 class="text-lg font-semibold text-gray-800">
-                                Zeeshan Nadaf
-                            </h3>
-                            <p class="mt-2 text-yellow-500">
-                                ★★★★★
-                            </p>
-                            <p class="mt-4 text-gray-600 text-center line-clamp-3">
-                                We recently booked a Jaipur Ranthambore trip with Enjoy Kara Do, and I
-                                couldn't be happier with the experience! From start to finish, the team
-                                ensured a seamless journey. Our guide was incredibly knowledgeable about
-                                the history and culture of both destinations, making the trip both informative
-                                and enjoyable. The accommodations were comfortable, and the itinerary was
-                                well-planned, allowing us to explore each site fully. I highly recommend
-                                Enjoy Kara Do for anyone looking for a hassle-free and unforgettable travel
-                                experience. Thank you for the memories!
-                            </p>
-                        </div>
-                    </div>
-                    <div class="swiper-slide w-2/3 md:w-1/3" data-swiper-slide-index="6" style="margin-right: 16px;">
-                        <div class="bg-white border rounded-lg p-4 shadow-md flex flex-col items-center text-center">
-                            <div class="w-24 h-24 bg-gray-200 rounded-full flex items-center justify-center mb-4">
-                            </div>
-                            <h3 class="text-lg font-semibold text-gray-800">
-                                Arjun Nair
-                            </h3>
-                            <p class="mt-2 text-yellow-500">
-                                ★★★★★
-                            </p>
-                            <p class="mt-4 text-gray-600 text-center line-clamp-3">
-                                I’m so glad I booked this 7-day tour of the Northeast! The stunning landscapes,
-                                the warm hospitality, and the thrilling experiences like boating in Dawki
-                                made it unforgettable.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="swiper-slide w-2/3 md:w-1/3" data-swiper-slide-index="7" style="margin-right: 16px;">
-                        <div class="bg-white border rounded-lg p-4 shadow-md flex flex-col items-center text-center">
-                            <div class="w-24 h-24 bg-gray-200 rounded-full flex items-center justify-center mb-4">
-                            </div>
-                            <h3 class="text-lg font-semibold text-gray-800">
-                                Aditya Gupta
-                            </h3>
-                            <p class="mt-2 text-yellow-500">
-                                ★★★★★
-                            </p>
-                            <p class="mt-4 text-gray-600 text-center line-clamp-3">
-                                From seamless booking to expertly curated itineraries. The attention to
-                                detail and personalized service exceeded our expectations. Our journey
-                                was enriched with unforgettable memories, thanks to their knowledgeable
-                                guides and top-notch accommodations. Highly recommend for anyone seeking
-                                a truly remarkable travel adventure!
-                            </p>
-                        </div>
-                    </div>
-                    <div class="swiper-slide w-2/3 md:w-1/3" data-swiper-slide-index="8" style="margin-right: 16px;">
-                        <div class="bg-white border rounded-lg p-4 shadow-md flex flex-col items-center text-center">
-                            <div class="w-24 h-24 bg-gray-200 rounded-full flex items-center justify-center mb-4">
-                            </div>
-                            <h3 class="text-lg font-semibold text-gray-800">
-                                Gurugaurab Mishra
-                            </h3>
-                            <p class="mt-2 text-yellow-500">
-                                ★★★★★
-                            </p>
-                            <p class="mt-4 text-gray-600 text-center line-clamp-3">
-                                Our experience with Enjoy Kara Do in our Gangtok &amp;amp; Darjeeling
-                                trip was outstanding. The coordinator was incredibly attentive, ensuring
-                                smooth transitions between destinations and promptly addressing any concerns.
-                                The itinerary was expertly crafted, highlighting the best of Gangtok &amp;amp;
-                                Darjeeling. Accommodations exceeded expectations, offering comfortable
-                                rooms with stunning views especially 3 Nights at Palri Boutique in Gangtok.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="swiper-slide w-2/3 md:w-1/3" data-swiper-slide-index="9" style="margin-right: 16px;">
-                        <div class="bg-white border rounded-lg p-4 shadow-md flex flex-col items-center text-center">
-                            <div class="w-24 h-24 bg-gray-200 rounded-full flex items-center justify-center mb-4">
-                            </div>
-                            <h3 class="text-lg font-semibold text-gray-800">
-                                Kaushlendra Shukla
-                            </h3>
-                            <p class="mt-2 text-yellow-500">
-                                ★★★★★
-                            </p>
-                            <p class="mt-4 text-gray-600 text-center line-clamp-3">
-                                Our visit to Himachal was well planned by Enjoy kara do team. Everything
-                                from start to end was perfect and that too at a very reasonable price.
-                                Will be going to plan our all future vacations through enjoy kara do only.
-                            </p>
-                        </div>
-                    </div>
+
                 </div>
             </div>
         </div>
     </div>
 </div>
+@endif
 
 @endsection
 @section('js')

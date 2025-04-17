@@ -4,10 +4,26 @@
 @php
 if (isset($row->id)){
 $action = route('tour.update', $row->id);
-$image = json_decode($row['media'],true);
+$galleryData = json_decode($row['media'], true);
+$gallery = [];
+
+if (!empty($galleryData) && is_array($galleryData)) {
+foreach ($galleryData as $image) {
+$gallery[] = [
+'image_alt' => $image['image_alt'] ?? '',
+'full_image' => $image['full_image'] ?? '',
+'featured' => $image['featured'] ?? false,
+];
+}
+
+}
 }else{
 $action = route('tour.store');
 }
+@endphp
+
+@php
+    $initialImageIndex = !empty($gallery) ? count($gallery) : 1;
 @endphp
 
 <!-- Content Header (Page header) -->
@@ -453,47 +469,72 @@ $action = route('tour.store');
                                 </div>
                             </div>
                         </div>
-
                         <div class="row" id="gallery-container">
                             @if(!empty($gallery))
                             @foreach($gallery as $index => $image)
                             <div class="col-sm-12 image_section mb-3">
-                                <label for="about_section_image">Image</label>
-                                <div class="input-group-prepend">
-                                    <button type="button" class="btn btn-primary text-nowrap gallery_model_btn"
-                                        data-id="{{ $index }}" data-toggle="modal" data-target=".gallery_images">Choose image
-                                    </button>
-                                    <input type="text" name="gallery[image_alt][]" class="form-control"
-                                        placeholder="Image alt" value="{{ $image['image_alt'] ?? '' }}">
+                                <label>Image</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <button type="button" class="btn btn-primary gallery_model_btn"
+                                            data-id="{{ $index }}" data-toggle="modal" data-target=".gallery_images">
+                                            Choose image
+                                        </button>
+                                    </div>
+                                    <input type="text" name="gallery[image_alt][]" class="form-control" placeholder="Image alt"
+                                        value="{{ $image['image_alt'] ?? '' }}">
                                     <input type="hidden" name="gallery[full_image][]" class="form-control full_image"
                                         value="{{ $image['full_image'] ?? '' }}">
+                                    <div class="input-group-append">
+                                        <button type="button" class="btn btn-danger remove-image-section">Remove</button>
+                                    </div>
                                 </div>
+
+                                <div class="form-check mt-2">
+                                    <input type="radio" name="gallery[featured]" value="{{ $index }}" class="form-check-input"
+                                        {{ !empty($image['featured']) ? 'checked' : '' }}>
+                                    <label class="form-check-label">Set as Featured</label>
+                                </div>
+
                                 <div class="image-preview mt-2">
                                     @if(!empty($image['full_image']))
-                                    <img src="{{ '/media/' . $image['full_image'] }}" width="150" class="img-thumbnail" alt="">
+                                    <img src="{{ asset('media/' . $image['full_image']) }}" width="150" class="img-thumbnail" alt="">
                                     @endif
                                 </div>
                             </div>
                             @endforeach
                             @else
                             <div class="col-sm-12 image_section mb-3">
-                                <label for="about_section_image">Image</label>
-                                <div class="input-group-prepend">
-                                    <button type="button" class="btn btn-primary text-nowrap gallery_model_btn"
-                                        data-id="0" data-toggle="modal" data-target=".gallery_images">Choose image
-                                    </button>
-                                    <input type="text" name="gallery[image_alt][]" class="form-control"
-                                        placeholder="Image alt">
+                                <label>Image</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <button type="button" class="btn btn-primary gallery_model_btn"
+                                            data-id="0" data-toggle="modal" data-target=".gallery_images">
+                                            Choose image
+                                        </button>
+                                    </div>
+                                    <input type="text" name="gallery[image_alt][]" class="form-control" placeholder="Image alt">
                                     <input type="hidden" name="gallery[full_image][]" class="form-control full_image">
+                                    <div class="input-group-append">
+                                        <button type="button" class="btn btn-danger remove-image-section">Remove</button>
+                                    </div>
+                                </div>
+                                <div class="form-check mt-2">
+                                    <input type="radio" name="gallery[featured]" value="0" class="form-check-input">
+                                    <label class="form-check-label">Set as Featured</label>
                                 </div>
                                 <div class="image-preview mt-2"></div>
                             </div>
                             @endif
                         </div>
 
-                        <div class="text-end">
-                            <button type="button" class="btn btn-success mt-2" onclick="addGalleryImage()">Add More</button>
+                        <div class="mb-3">
+                            <button type="button" class="btn btn-success" id="add-more-gallery">Add More Image</button>
                         </div>
+
+                        <!-- <div class="text-end">
+                            <button type="button" class="btn btn-success mt-2" onclick="addGalleryImage()">Add More</button>
+                        </div> -->
 
                         <button type="sumbit" class="btn btn-primary btn-user btn-block mt-4">
                             Save
@@ -543,27 +584,45 @@ $action = route('tour.store');
     }
 </script>
 
-<script>
-function addGalleryImage() {
-    let index = document.querySelectorAll('#gallery-container .image_section').length;
 
-    let html = `
+
+<script>
+    let imageIndex = {{ $initialImageIndex }};
+
+    $('#add-more-gallery').on('click', function () {
+        const newImageBlock = `
         <div class="col-sm-12 image_section mb-3">
-            <label for="about_section_image">Image</label>
-            <div class="input-group-prepend">
-                <button type="button" class="btn btn-primary text-nowrap gallery_model_btn"
-                    data-id="${index}" data-toggle="modal" data-target=".gallery_images">Choose image
-                </button>
-                <input type="text" name="gallery[image_alt][]" class="form-control"
-                    placeholder="Image alt">
+            <label>Image</label>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <button type="button" class="btn btn-primary gallery_model_btn"
+                            data-id="${imageIndex}" data-toggle="modal" data-target=".gallery_images">
+                        Choose image
+                    </button>
+                </div>
+                <input type="text" name="gallery[image_alt][]" class="form-control" placeholder="Image alt">
                 <input type="hidden" name="gallery[full_image][]" class="form-control full_image">
+                <div class="input-group-append">
+                    <button type="button" class="btn btn-danger remove-image-section">Remove</button>
+                </div>
             </div>
+
+            <div class="form-check mt-2">
+                <input type="radio" name="gallery[featured]" value="${imageIndex}" class="form-check-input">
+                <label class="form-check-label">Set as Featured</label>
+            </div>
+
             <div class="image-preview mt-2"></div>
         </div>
-    `;
+        `;
 
-    document.getElementById('gallery-container').insertAdjacentHTML('beforeend', html);
-}
+        $('#gallery-container').append(newImageBlock);
+        imageIndex++;
+    });
+
+    $(document).on('click', '.remove-image-section', function () {
+        $(this).closest('.image_section').remove();
+    });
 </script>
 
 @endsection

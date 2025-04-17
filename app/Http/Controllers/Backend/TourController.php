@@ -169,14 +169,32 @@ class TourController extends Controller
         DB::beginTransaction();
 
         try {
-            $data['media'] = json_encode($request->gallery);
+            $galleryImages = [];
+
+            if ($request->has('gallery')) {
+                $imageAlts = $request->gallery['image_alt'] ?? [];
+                $fullImages = $request->gallery['full_image'] ?? [];
+                $featuredIndex = $request->gallery['featured'] ?? null;
+
+                foreach ($fullImages as $index => $fullImage) {
+                    if ($fullImage) {
+                        $galleryImages[] = [
+                            'image_alt' => $imageAlts[$index] ?? '',
+                            'full_image' => $fullImage,
+                            'featured' => ((string)$index === (string)$featuredIndex) ? true : false,
+                        ];
+                    }
+                }
+
+                $data['media'] = json_encode($galleryImages);
+            }
 
             $tour = Tour::where('id', $id)->update($data);
 
             $tourInstance = Tour::find($id);
             $tourInstance->tour_categories()->sync($request->tour_category_id);
 
-            $tourInstance->highlights()->delete(); 
+            $tourInstance->highlights()->delete();
             if ($request->has('highlights')) {
                 foreach ($request->highlights as $highlight) {
                     if ($highlight) {

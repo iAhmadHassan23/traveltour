@@ -75,6 +75,31 @@ class BackendMenuServiceProvider extends ServiceProvider
             ]);
 
             $event->menu->add([
+                'text' => 'Banners',
+                'url'  => route('banner.index'),
+                'icon' => 'fas fa-fw fa-list',
+                'can'  => 'banner list'
+
+            ]);
+
+            $event->menu->add([
+                'text' => 'Recent Trips',
+                'url'  => route('trips.index'),
+                'icon' => 'fas fa-fw fa-list',
+                'can'  => 'trip list'
+
+            ]);
+
+            $event->menu->add([
+                'text' => 'Reviews',
+                'url'  => route('reviews.index'),
+                'icon' => 'fas fa-fw fa-list',
+                'can'  => 'review list'
+
+            ]);
+
+
+            $event->menu->add([
                 'text' => 'Pages',
                 'url'  => route('page.index'),
                 'icon' => 'fas fa-fw fa-file',

@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Banner;
 use App\Models\Page;
 use App\Models\PageSection;
 use Illuminate\Http\Request;
 use App\Models\Blog;
 use App\Models\Itenary;
+use App\Models\RecentTrip;
+use App\Models\Review;
 use App\Models\Tour;
 use Mail;
 
@@ -99,13 +102,32 @@ class WebsiteController extends Controller {
             $query->where('title', 'Adventure Trips');
         })->get();
 
+        $best_offers = Tour::whereHas('tour_categories', function ($query) {
+            $query->where('title', 'Best Offers');
+        })->take(3)->get();
+
+        $trending = Tour::whereHas('tour_categories', function ($query) {
+            $query->where('title', 'Trending');
+        })->take(3)->get();
+
+        $recent_trips = RecentTrip::get();
+        $reviews = Review::get();
+
+        $sliders = Banner::get();
+
+
         return view('home', compact(
             'honeymoon_tours',
             'international_tours',
             'domestic_tours',
             'leisure_luxury_tours',
             'family_tours',
-            'adventure_tours'
+            'adventure_tours',
+            'best_offers',
+            'trending',
+            'recent_trips',
+            'reviews',
+            'sliders'
         ));
     }
 
